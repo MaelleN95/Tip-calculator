@@ -1,0 +1,49 @@
+header {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: $lightblue;
+  @media (min-width: $desktop) {
+    border-radius: 0 0 10px 10px;
+  }
+
+  & .navbar {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    padding: 5px 10px;
+
+    & .icon {
+      position: relative;
+      padding: 0;
+      font-size: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: $darkblue;
+      & .euro {
+        font-size: 40px;
+        position: absolute;
+        bottom: -8px;
+        right: -16px;
+        color: $light;
+      }
+    }
+    & nav {
+      margin-left: 30px;
+      & a {
+        margin: 0 0.9rem;
+        display: inline-block;
+        min-width: 120px;
+        color: $dark;
+        text-decoration: none;
+        &:hover {
+          font-weight: bold;
+        }
+      }
+      & .active {
+        text-decoration: underline;
+      }
+    }
+  }
+}

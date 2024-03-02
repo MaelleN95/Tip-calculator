@@ -1,0 +1,57 @@
+// Colors
+$light: white;
+$dark: #1d1e1e;
+$darkblue: #1b3c6e;
+$lightblue: #8cc8ff;
+
+@media (prefers-color-scheme: dark) {
+  $light: #1d1e1e;
+  $dark: white;
+  $darkblue: #8cc8ff;
+  $lightblue: #1b3c6e;
+}
+
+// Screen sizes
+// > 1600px = large desktop
+$desktop: 1600px; // 1175 - 1600px = desktop
+$tablet: 1175px; // 720 - 1175 = tablet
+$mobil: 720px; // 425 and 720 = mobil
+$small-mobil: 425px; // 425 and less = small mobil
+
+// Fonts
+@mixin title1 {
+  font: 3.5rem 'Prata';
+  text-align: center;
+  margin: 0.8rem 0;
+  @media (max-width: $mobil) {
+    margin: 0.5rem 0;
+    font-size: 2.8rem;
+  }
+}
+
+@mixin title2 {
+  font: 3rem 'Prata';
+  text-align: center;
+  @media (max-width: $mobil) {
+    font-size: 2rem;
+  }
+}
+
+@mixin title3 {
+  font: 2rem 'Prata';
+  @media (max-width: $mobil) {
+    font-size: 1.5rem;
+  }
+}
+
+@mixin highlight-body {
+  font-weight: bold;
+}
+
+@mixin general-font-settings {
+  font-family: 'Roboto', Helvetica, sans-serif;
+  line-height: 1.7;
+  font-weight: 400;
+  font-size: 1.3rem;
+  color: $dark;
+}
