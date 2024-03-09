@@ -1,0 +1,22 @@
+[
+  {
+    "country": "France",
+    "code": "EUR",
+    "culture": "Texte culture France"
+  },
+  {
+    "country": "Angleterre",
+    "code": "EUR",
+    "culture": "Texte culture France"
+  },
+  {
+    "country": "Canada",
+    "code": "CAD",
+    "culture": "Texte culture Canada"
+  },
+  {
+    "country": "USA",
+    "code": "USD",
+    "culture": "Texte culture USA"
+  }
+]

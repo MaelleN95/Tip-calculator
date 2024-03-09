@@ -5,7 +5,7 @@ function Footer() {
       <ul>
         <li>
           <a
-            href="https://www.linkedin.com/in/ma%C3%ABlle-nioche/"
+            href="https://www.linkedin.com/in/maelle-nioche/"
             target="_blank"
             rel="noopener noreferrer"
           >
