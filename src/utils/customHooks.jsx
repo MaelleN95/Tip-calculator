@@ -35,6 +35,7 @@ export function useDatas() {
           country: country.country,
           code: country.code,
           rate: foundData ? foundData[1] : null,
+          currencyUnit: country.currencyUnit,
         };
       });
 

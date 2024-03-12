@@ -1,22 +1,37 @@
 [
   {
+    "country": "États-Unis",
+    "code": "USD",
+    "currencyUnit": "$",
+    "indication": "20%",
+    "culture": "Texte culture USA"
+  },
+  {
     "country": "France",
     "code": "EUR",
+    "currencyUnit": "€",
+    "indication": "1%",
     "culture": "Texte culture France"
   },
   {
-    "country": "Angleterre",
+    "country": "Italie",
     "code": "EUR",
-    "culture": "Texte culture France"
+    "currencyUnit": "€",
+    "indication": "7%",
+    "culture": "Texte culture Italie"
+  },
+  {
+    "country": "Royaume-Uni",
+    "code": "GBP",
+    "currencyUnit": "£",
+    "indication": "8%",
+    "culture": "Texte culture UK"
   },
   {
     "country": "Canada",
     "code": "CAD",
+    "currencyUnit": "$",
+    "indication": "15%",
     "culture": "Texte culture Canada"
-  },
-  {
-    "country": "USA",
-    "code": "USD",
-    "culture": "Texte culture USA"
   }
 ]

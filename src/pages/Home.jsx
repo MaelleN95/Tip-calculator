@@ -1,19 +1,61 @@
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDatas } from '../utils/customHooks';
 
 import Note from '../components/note/Note';
 
+import countries from '../assets/countries.json';
+
+function findCurrencyUnit(currencyArray, currency) {
+  const currencyMatch = currencyArray.find((curr) => curr.rate === currency);
+  return currencyMatch ? currencyMatch.currencyUnit : null;
+}
+
+function rounded(number) {
+  return parseFloat(number)
+    .toFixed(2)
+    .replace(/\.?0+$/, '');
+}
+
 function Home() {
+  const [result, setResult] = useState([]);
+  const [currencyUnit, setcurrencyUnit] = useState([]);
+  const [NbPersons, setNbPersons] = useState(1);
+  const [tipIndication, setTipIndication] = useState('');
+
   const form = useForm({ mode: 'onTouched' });
   const { register, handleSubmit, formState } = form;
   const { isDirty, isValid } = formState;
 
   const onSubmit = async (data) => {
     try {
-      console.log(data);
+      const exchangeRate = rounded(data.habitualcurrency / data.tipcurrency);
+      const habCurBil = rounded(data.bill / exchangeRate);
+      const tipCurTip = rounded(data.bill * (data.percent / 100));
+      const habCurTip = rounded(tipCurTip / exchangeRate);
+
+      setcurrencyUnit([
+        findCurrencyUnit(currency, data.habitualcurrency),
+        findCurrencyUnit(currency, data.tipcurrency),
+      ]);
+
+      setResult([habCurBil, habCurTip, tipCurTip]);
+      setNbPersons(data.divide);
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const tipCurrencyIndicationChange = (event) => {
+    const selectedCurrency =
+      event.target.options[event.target.selectedIndex].text;
+    const selectedTipIndication = countries.find(
+      (country) => country.country === selectedCurrency.split(' (')[0]
+    );
+
+    selectedTipIndication
+      ? setTipIndication(selectedTipIndication.indication)
+      : setTipIndication('');
   };
 
   const { currency } = useDatas();
@@ -28,9 +70,16 @@ function Home() {
           onSubmit={handleSubmit(onSubmit)}
           noValidate
         >
-          <label htmlFor="habitual-currency">
+          <label htmlFor="habitualcurrency">
             Votre devise habituelle
-            <select id="habitual-currency" {...register('habitual-currency')}>
+            <select
+              id="habitualcurrency"
+              {...register('habitualcurrency', {
+                required: true,
+                valueAsNumber: true,
+              })}
+            >
+              <option value="">-- Choisissez une option --</option>
               {currency.map((cur, i) => (
                 <option key={i} value={cur.rate}>
                   {cur.country} ({cur.code})
@@ -38,9 +87,17 @@ function Home() {
               ))}
             </select>
           </label>
-          <label htmlFor="tip-currency">
+          <label htmlFor="tipcurrency">
             Devise dans laquelle vous souhaitez faire votre pourboire
-            <select id="tip-currency" {...register('tip-currency')}>
+            <select
+              id="tipcurrency"
+              {...register('tipcurrency', {
+                required: true,
+                valueAsNumber: true,
+              })}
+              onChange={tipCurrencyIndicationChange}
+            >
+              <option value="">-- Choisissez une option --</option>
               {currency.map((cur, i) => (
                 <option key={i} value={cur.rate}>
                   {cur.country} ({cur.code})
@@ -48,12 +105,14 @@ function Home() {
               ))}
             </select>
           </label>
-          <label htmlFor="bil">
-            Montant total
+          {tipIndication && <p>{tipIndication}</p>}
+
+          <label htmlFor="bill">
+            Montant de l&apos;addition
             <input
               type="number"
-              id="bil"
-              {...register('bil', {
+              id="bill"
+              {...register('bill', {
                 required: {
                   value: true,
                   message: 'Ce champ est obligatoire',
@@ -90,12 +149,12 @@ function Home() {
               type="number"
               id="divide"
               {...register('divide', {
-                min: 0,
+                min: 1,
                 max: 100,
                 valueAsNumber: true,
               })}
               defaultValue={1}
-              min={0}
+              min={1}
               max={100}
             />
           </label>
@@ -103,36 +162,58 @@ function Home() {
             Calculer
           </button>
         </form>
-        <section className="result">
-          <h2>Résultats</h2>
-          <table>
-            <caption>Pourboire</caption>
-            <tbody>
-              <tr>
-                <th>Total</th>
-                <td>0</td>
-              </tr>
-              <tr>
-                <th>Par personne</th>
-                <td>0</td>
-              </tr>
-            </tbody>
-          </table>
+        {result[0] != null && (
+          <section className="result">
+            <h2>Résultats</h2>
+            {result[1] !== result[2] && (
+              <span>
+                Le montant de l&apos;addition dans votre devise équivaut à{' '}
+                {result[0]}
+                {currencyUnit[0]}
+              </span>
+            )}
 
-          <table>
-            <caption>Equivalent dans votre devise</caption>
-            <tbody>
-              <tr>
-                <th>Total</th>
-                <td>0</td>
-              </tr>
-              <tr>
-                <th>Par personne</th>
-                <td>0</td>
-              </tr>
-            </tbody>
-          </table>
-        </section>
+            <table>
+              <caption>Pourboire</caption>
+              <tbody>
+                <tr>
+                  <td>
+                    {result[2]}
+                    {currencyUnit[1]}
+                  </td>
+                </tr>
+                <tr>
+                  <th>Par personne</th>
+                  <td>
+                    {rounded(result[2] / NbPersons)}
+                    {currencyUnit[1]}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            {result[1] !== result[2] && (
+              <table>
+                <caption>Equivalent dans votre devise</caption>
+                <tbody>
+                  <tr>
+                    <td>
+                      {result[1]}
+                      {currencyUnit[0]}
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Par personne</th>
+                    <td>
+                      {rounded(result[1] / NbPersons)}
+                      {currencyUnit[0]}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            )}
+          </section>
+        )}
       </section>
 
       <p>
