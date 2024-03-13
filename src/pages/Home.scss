@@ -22,28 +22,140 @@
       border: 0;
       color: $dark;
       background-color: $light;
+      &:focus {
+        box-shadow: 0px 0px 10px $darkblue;
+      }
+      &:invalid {
+        animation: heartbeat 1s infinite alternate;
+      }
     }
     & .fd-row {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
-      & > * {
-        width: 31.5%;
+      @media (max-width: $mobil) {
+        flex-direction: column;
       }
+      & > * {
+        width: 320px;
+        @media (max-width: $tablet) {
+          width: 30%;
+        }
+        @media (max-width: $mobil) {
+          width: 100%;
+        }
+      }
+    }
+    & .input-and-unit {
+      position: relative;
+      & > input {
+        padding-right: 60px;
+        width: 250px;
+        text-align: right;
+        @media (max-width: $tablet) {
+          padding-right: 22%;
+          width: 78%;
+        }
+        @media (max-width: $mobil) {
+          padding-right: 30%;
+          width: 70%;
+        }
+        // hide arrow
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          appearance: none;
+          margin: 0;
+        }
+      }
+      & > span {
+        position: absolute;
+        top: 50%;
+        right: 0.7rem;
+        padding-left: 10px;
+        transform: translate(0, -50%);
+        text-align: end;
+        border-left: 2px solid lighten($color: $dark, $amount: 70);
+        @media (max-width: $tablet) {
+          right: 0.4rem;
+          width: 10px;
+          padding-left: 7px;
+        }
+      }
+    }
+    & #divide {
+      text-align: center;
     }
     & button {
       margin: 20px;
     }
   }
-  & .result {
+  & .results {
     padding: 2rem;
     max-width: calc(1100px - 4rem);
     margin: auto;
     background-color: $light;
     border-radius: 10px;
+    & h2 {
+      margin-top: 0;
+    }
+    & .tables {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      & .table {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin: auto;
+        width: 100%;
+        max-width: 500px;
+        min-height: 101.8px;
+        background-color: $lightblue;
+        padding: 20px 40px;
+        border-radius: 10px;
+      }
+      & h3 {
+        @include general-font-settings;
+        line-height: 1;
+        font-weight: bold;
+        text-align: center;
+        margin: 0;
+      }
+      & p {
+        margin: 0;
+        margin: 0.8rem 0;
+      }
+      & .dividedTipTitle {
+        margin: 0.5rem 0 0 0;
+      }
+      & .result {
+        display: flex;
+        align-items: center;
+        width: calc(100% - 30px);
+        padding: 0 15px;
+        height: 40px;
+        border-radius: 10px;
+        border: 0;
+        color: $dark;
+        background-color: $light;
+      }
+    }
   }
 }
 
 .countryask {
   text-align: center;
+}
+
+@keyframes heartbeat {
+  from {
+    color: $darkblue;
+  }
+  to {
+    color: red;
+  }
 }

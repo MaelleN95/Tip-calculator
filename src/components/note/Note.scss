@@ -1,7 +1,5 @@
 .note {
   display: flex;
-  align-items: center;
-  justify-content: start;
   padding: 0.6rem;
   border: 2px transparent solid;
   &--vertical {
@@ -20,10 +18,9 @@
     }
   }
   &__icon {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: block;
     font-size: 1.8rem;
+    min-width: 1.8rem;
     color: $lightblue;
     margin: 0.3rem 0.8rem 0.3rem 0;
     cursor: pointer;

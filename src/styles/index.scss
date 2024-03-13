@@ -45,7 +45,7 @@ h3 {
   button {
     background-color: $darkblue;
     @include general-font-settings;
-    font-weight: bold;
+    @include highlight-body;
     color: $light;
     padding: 7px 8%;
     border-radius: 10px;
