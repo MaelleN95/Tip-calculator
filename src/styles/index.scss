@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Prata&family=Roboto:ital,wght@0,400;0,700;1,400&display=swap');
 
 @import './settings.scss';
+@import '../pages/Home.scss';
 @import '../components/header/Header.scss';
 @import '../components/footer/Footer.scss';
 @import '../components/note/Note.scss';
@@ -25,6 +26,10 @@ body {
   }
 }
 
+main {
+  margin: 2rem;
+}
+
 h1 {
   @include title1;
 }
@@ -33,4 +38,42 @@ h2 {
 }
 h3 {
   @include title3;
+}
+
+.center {
+  text-align: center;
+  button {
+    background-color: $darkblue;
+    @include general-font-settings;
+    font-weight: bold;
+    color: $light;
+    padding: 7px 8%;
+    border-radius: 10px;
+    border: 0;
+    cursor: pointer;
+    &:valid {
+      &:hover {
+        box-shadow: inset -2px -2px 6px $dark, inset 2px 2px 6px $lightblue;
+      }
+      &:active {
+        box-shadow: inset -2px -2px 6px $lightblue, inset 2px 2px 6px $dark;
+      }
+    }
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.5;
+      &:hover {
+        animation: headshake 100ms cubic-bezier(0.4, 0.1, 0.6, 0.9) 2;
+      }
+    }
+  }
+}
+
+@keyframes headshake {
+  25% {
+    transform: translateX(2%);
+  }
+  75% {
+    transform: translateX(2% * -1);
+  }
 }

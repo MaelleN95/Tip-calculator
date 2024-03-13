@@ -32,6 +32,7 @@ $small-mobil: 425px; // 425 and less = small mobil
 @mixin title2 {
   font: 3rem 'Prata';
   text-align: center;
+  margin: 0.7rem;
   @media (max-width: $mobil) {
     font-size: 2rem;
   }

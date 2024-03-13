@@ -63,10 +63,16 @@ function Home() {
   return (
     <main>
       <h1>Calculatrice de pourboire</h1>
-      <section>
-        <Note />
+      <Note
+        direction={'vertical'}
+        title="Information d'utilisation de la calcultatrice"
+        openSetting={false}
+      >
+        Informations sur l&apos;utilisation de la calculatrice à venir...
+      </Note>
+      <section className="calculatorblock">
         <form
-          className="calculator"
+          className="formcalculator"
           onSubmit={handleSubmit(onSubmit)}
           noValidate
         >
@@ -105,72 +111,89 @@ function Home() {
               ))}
             </select>
           </label>
-          {tipIndication && <p>{tipIndication}</p>}
 
-          <label htmlFor="bill">
-            Montant de l&apos;addition
-            <input
-              type="number"
-              id="bill"
-              {...register('bill', {
-                required: {
-                  value: true,
-                  message: 'Ce champ est obligatoire',
-                },
-                min: 0,
-                valueAsNumber: true,
-              })}
-              defaultValue={100}
-              min={0}
-            />
-          </label>
-          <label htmlFor="percent">
-            Pourcentage
-            <input
-              type="number"
-              id="percent"
-              {...register('percent', {
-                required: {
-                  value: true,
-                  message: 'Ce champ est obligatoire',
-                },
-                min: 0,
-                max: 100,
-                valueAsNumber: true,
-              })}
-              defaultValue={15}
-              min={0}
-              max={100}
-            />
-          </label>
-          <label htmlFor="divide">
-            Nombre de personnes
-            <input
-              type="number"
-              id="divide"
-              {...register('divide', {
-                min: 1,
-                max: 100,
-                valueAsNumber: true,
-              })}
-              defaultValue={1}
-              min={1}
-              max={100}
-            />
-          </label>
-          <button type="submit" disabled={!isDirty || !isValid}>
-            Calculer
-          </button>
+          {tipIndication && (
+            <Note
+              direction={'horizontal'}
+              title="Indication sur la culture du pourboire"
+              openSetting={true}
+            >
+              {tipIndication}
+            </Note>
+          )}
+          <div className="fd-row">
+            <label htmlFor="bill">
+              Montant de l&apos;addition
+              <input
+                type="number"
+                id="bill"
+                {...register('bill', {
+                  required: {
+                    value: true,
+                    message: 'Ce champ est obligatoire',
+                  },
+                  min: 0,
+                  valueAsNumber: true,
+                })}
+                defaultValue={100}
+                min={0}
+              />
+            </label>
+            <label htmlFor="percent">
+              Pourcentage
+              <input
+                type="number"
+                id="percent"
+                {...register('percent', {
+                  required: {
+                    value: true,
+                    message: 'Ce champ est obligatoire',
+                  },
+                  min: 0,
+                  max: 100,
+                  valueAsNumber: true,
+                })}
+                defaultValue={15}
+                min={0}
+                max={100}
+              />
+            </label>
+            <label htmlFor="divide">
+              Nombre de personnes
+              <input
+                type="number"
+                id="divide"
+                {...register('divide', {
+                  min: 1,
+                  max: 100,
+                  valueAsNumber: true,
+                })}
+                defaultValue={1}
+                min={1}
+                max={100}
+              />
+            </label>
+          </div>
+          <div className="center">
+            <button type="submit" disabled={!isDirty || !isValid}>
+              Calculer
+            </button>
+          </div>
         </form>
+
         {result[0] != null && (
           <section className="result">
             <h2>Résultats</h2>
             {result[1] !== result[2] && (
-              <span>
+              <Note
+                direction={'horizontal'}
+                title="Indication sur le montant de votre addition"
+                openSetting={true}
+              >
                 Le montant de l&apos;addition dans votre devise équivaut à{' '}
                 {result[0]}
                 {currencyUnit[0]}
-              </span>
+              </Note>
             )}
 
             <table>
@@ -216,11 +239,15 @@ function Home() {
         )}
       </section>
 
-      <p>
-        Il manque votre pays ? Sélectionnez-le, nous l&apos;ajouterons avec
-        plaisir !
-      </p>
-      <button>Je veux ajouter un pays !</button>
+      <section className="countryask">
+        <p>
+          Il manque votre pays ? Sélectionnez-le, nous l&apos;ajouterons avec
+          plaisir !
+        </p>
+        <div className="center">
+          <button>Je veux ajouter un pays !</button>
+        </div>
+      </section>
     </main>
   );
 }

@@ -1,19 +1,35 @@
 import { useState } from 'react';
 
-function Note() {
-  const [open, updateOpen] = useState(false);
+import { IoMdInformationCircle } from 'react-icons/io';
+
+function Note({ direction, children, title, openSetting }) {
+  const [open, updateOpen] = useState(openSetting);
 
   const toggleOpen = () => {
     updateOpen(!open);
   };
 
   return (
-    <>
-      <div onClick={toggleOpen}>?</div>
-      <div style={open ? { display: 'block' } : { display: 'none' }}>
-        Informations sur l&apos;utilisation de la calculatrice à venir...
+    <div
+      className={
+        open
+          ? `note note--${direction} note--${direction}--open`
+          : `note note--${direction}`
+      }
+    >
+      <IoMdInformationCircle
+        title={title}
+        className="note__icon"
+        onClick={toggleOpen}
+        tabIndex={0}
+      />
+      <div
+        className="note__indication"
+        style={open ? { display: 'block' } : { display: 'none' }}
+      >
+        {children}
       </div>
-    </>
+    </div>
   );
 }
 

@@ -1,0 +1,36 @@
+.note {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  padding: 0.6rem;
+  border: 2px transparent solid;
+  &--vertical {
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+  }
+  &--horizontal {
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    &--open {
+      border: 2px $dark solid;
+      border-radius: 10px;
+      background-color: $light;
+    }
+  }
+  &__icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8rem;
+    color: $lightblue;
+    margin: 0.3rem 0.8rem 0.3rem 0;
+    cursor: pointer;
+    background-color: $darkblue;
+    border-radius: 50%;
+    &:hover {
+      color: $light;
+    }
+  }
+}
