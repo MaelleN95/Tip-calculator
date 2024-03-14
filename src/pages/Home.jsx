@@ -264,7 +264,7 @@ function Home() {
               </div>
               {result[1] !== result[2] && (
                 <div className="table">
-                  <h3>Equivalent dans votre devise</h3>
+                  <h3>Dans votre devise</h3>
                   <p className="result">
                     {rounded(result[1])}
                     {currencyUnit[0]}

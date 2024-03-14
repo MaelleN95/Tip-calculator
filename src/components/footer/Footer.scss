@@ -4,21 +4,32 @@ footer {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 0 20px;
+  padding: 10px 20px;
   font-size: 1rem;
   @media (min-width: $desktop) {
     border-radius: 10px 10px 0 0;
+  }
+  @media (max-width: $mobil) {
+    font-size: 0.8rem;
+    flex-direction: column;
   }
   & ul {
     list-style: none;
     display: flex;
     flex-direction: row;
     margin: 0;
+    padding: 0;
+    @media (max-width: $mobil) {
+      margin-top: 5px;
+    }
     & li {
-      padding: 10px;
+      padding: 0 5px;
       & a {
-        text-decoration: none;
         color: $dark;
+        font-size: 1.8rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
     }
   }

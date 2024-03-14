@@ -3,17 +3,23 @@ header {
   align-items: center;
   padding: 10px 20px;
   background-color: $lightblue;
-
   @media (min-width: $desktop) {
     border-radius: 0 0 10px 10px;
   }
-
+  @media (max-width: $small-mobil) {
+    justify-content: center;
+    padding: 0;
+  }
   & .navbar {
     display: flex;
     align-items: center;
     flex-direction: row;
     padding: 5px 10px;
-
+    @media (max-width: $small-mobil) {
+      flex-direction: column;
+      width: 100%;
+      padding: 0;
+    }
     & .icon {
       position: relative;
       padding: 0;
@@ -22,6 +28,10 @@ header {
       align-items: center;
       justify-content: center;
       color: $darkblue;
+      @media (max-width: $small-mobil) {
+        margin: 20px;
+      }
+
       & .euro {
         font-size: 40px;
         position: absolute;
@@ -32,6 +42,17 @@ header {
     }
     & nav {
       margin-left: 30px;
+      @media (max-width: $mobil) {
+        margin-left: 20px;
+      }
+      @media (max-width: $small-mobil) {
+        margin: 0;
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        text-align: center;
+        background: lighten($color: $lightblue, $amount: 7);
+      }
       & a {
         margin: 0 0.9rem;
         display: inline-block;
@@ -41,9 +62,24 @@ header {
         &:hover {
           font-weight: bold;
         }
+        @media (max-width: $mobil) {
+          min-width: 100px;
+        }
+        @media (max-width: $small-mobil) {
+          min-width: 50px;
+          margin: 0;
+          padding: 10px;
+          border-bottom: 4px lighten($color: $darkblue, $amount: 45) solid;
+        }
       }
       & .active {
         text-decoration: underline;
+        @media (max-width: $small-mobil) {
+          border-bottom: 4px $darkblue solid;
+          font-weight: bold;
+          text-decoration: none;
+          box-shadow: inset 0 0 60px rgba($color: $light, $alpha: 0.3);
+        }
       }
     }
   }

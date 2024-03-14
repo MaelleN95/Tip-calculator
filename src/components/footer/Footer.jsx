@@ -1,3 +1,5 @@
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
+
 function Footer() {
   return (
     <footer>
@@ -9,7 +11,7 @@ function Footer() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            LinkedIn
+            <FaLinkedin />
           </a>
         </li>
         <li>
@@ -18,7 +20,7 @@ function Footer() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Github
+            <FaGithub />
           </a>
         </li>
       </ul>
