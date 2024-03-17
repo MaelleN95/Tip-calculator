@@ -1,0 +1,126 @@
+$px-arrow: 2rem;
+$px-arrow-mobil: 1.5rem;
+
+@mixin arrow-size {
+  width: $px-arrow;
+  height: $px-arrow;
+}
+
+@mixin arrow-size-mobil {
+  width: $px-arrow-mobil;
+  height: $px-arrow-mobil;
+}
+
+@mixin padding-collapse-close {
+  padding: 0.9rem 1.9rem;
+}
+
+.collapse {
+  width: 49%;
+
+  @media (max-width: $tablet) {
+    width: 100%;
+  }
+
+  &__close {
+    position: relative;
+    cursor: pointer;
+    background-color: $darkblue;
+    color: white;
+    @include padding-collapse-close;
+    display: grid;
+    grid-template-columns: calc(70px + 1.3rem) 1fr 70px;
+    align-items: center;
+    border-radius: 10px;
+    transition: border-radius 0.6s;
+
+    &::after {
+      position: absolute;
+      content: '';
+      bottom: 0;
+      left: calc(50%);
+      width: 0;
+      height: 4px;
+      border-radius: 50px;
+      background-color: $light;
+      transition: all 0.3s;
+    }
+
+    & h3 {
+      position: relative;
+      left: 0;
+      font: 1.7rem 'Roboto', Helvetica, sans-serif;
+      font-weight: 500;
+      margin: 0;
+      transition: all 0.3s;
+    }
+
+    &--clicked {
+      border-radius: 10px 10px 0 0;
+      & > h3 {
+        width: 12rem;
+        left: calc(50% - 6rem);
+        text-align: center;
+      }
+      &::after {
+        left: calc(50% - 50% / 2);
+        width: 50%;
+      }
+    }
+
+    & img {
+      height: 40px;
+      width: 70px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+    &__arrow {
+      justify-self: end;
+      color: $lightblue;
+      @include arrow-size;
+      padding: 6px;
+      @media (max-width: $mobil) {
+        @include arrow-size-mobil;
+        padding: 0;
+      }
+      &--open {
+        transform: rotate(180deg);
+        transition: all 0.3s;
+      }
+      &--close {
+        transform: rotate(0deg);
+        transition: all 0.3s;
+      }
+    }
+  }
+  &__txt {
+    background-color: $lightblue;
+    color: $dark;
+    line-height: 25px;
+    border-radius: 0 0 10px 10px;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+
+    & p {
+      margin-top: 0;
+      font-style: italic;
+    }
+
+    @media (max-width: $mobil) {
+      font-size: 12px;
+      line-height: 17px;
+    }
+
+    &--hidden {
+      max-height: 0;
+      padding: 0 1.9rem;
+      border-radius: 10px;
+      transition: border-radius 0.2s, max-height 0.3s, padding 0.2s;
+    }
+    &--open {
+      padding: 1.9rem 1.9rem;
+      max-height: 15rem;
+      transition: border-radius 0.2s, max-height 0.3s, padding 0.2s;
+    }
+  }
+}

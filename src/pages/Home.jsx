@@ -103,7 +103,40 @@ function Home() {
         title="Information d'utilisation de la calcultatrice"
         openSetting={false}
       >
-        Informations sur l&apos;utilisation de la calculatrice à venir...
+        Pour utiliser la calculatrice de pourboire, rien de plus simple :
+        <ol>
+          <li>
+            Sélectionnez votre <strong>devise habituelle</strong>, celle avec
+            laquelle vous avez l’habitude de payer.
+          </li>
+          <li>
+            Choisissez la{' '}
+            <strong>
+              devise du pays où vous vous apprêtez à faire un pourboire
+            </strong>{' '}
+            :
+            <Note direction="horizontal" openSetting={true}>
+              Une fois choisie, une petite information, dans le même format que
+              celle-ci, s’affichera en dessous pour vous conseiller sur le
+              montant du pourboire.
+            </Note>
+          </li>
+          <li>
+            Indiquez le <strong>montant de l’addition</strong>.
+          </li>
+          <li>
+            Indiquez le <strong>pourcentage</strong> de pourboire que vous
+            souhaitez laisser.
+          </li>
+          <li>
+            Indiquez le <strong>nombre de personnes</strong> si vous souhaitez
+            partager le montant du pourboire.
+          </li>
+          <li>
+            Et enfin, cliquez sur le bouton{' '}
+            <strong>&quot;Calculer&quot;</strong>.
+          </li>
+        </ol>
       </Note>
       <section className="calculatorblock">
         <form
@@ -237,27 +270,31 @@ function Home() {
                 openSetting={true}
               >
                 Dans votre devise, le montant de l&apos;addition vaut{' '}
-                <span>
+                <strong>
                   {rounded(result[0])}
                   {currencyUnit[0]}
-                </span>
+                </strong>
               </Note>
             )}
 
             <div className="tables">
               <div className="table">
-                <h3>Pourboire</h3>
+                <h3>Montant du pourboire</h3>
                 <p className="result">
-                  {rounded(result[2])}
-                  {currencyUnit[1]}
+                  <strong>
+                    {rounded(result[2])}
+                    {currencyUnit[1]}
+                  </strong>
                 </p>
                 {/* Displaying tip per person if more than one person */}
                 {NbPersons !== 1 && (
                   <>
                     <p className="dividedTipTitle">Par personne</p>
                     <p className="result">
-                      {rounded(result[2] / NbPersons)}
-                      {currencyUnit[1]}
+                      <strong>
+                        {rounded(result[2] / NbPersons)}
+                        {currencyUnit[1]}
+                      </strong>
                     </p>
                   </>
                 )}

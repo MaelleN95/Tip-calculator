@@ -4,13 +4,6 @@ $dark: #1d1e1e;
 $darkblue: #1b3c6e;
 $lightblue: #8cc8ff;
 
-@media (prefers-color-scheme: dark) {
-  $light: #1d1e1e;
-  $dark: white;
-  $darkblue: #8cc8ff;
-  $lightblue: #1b3c6e;
-}
-
 // Screen sizes
 // > 1600px = large desktop
 $desktop: 1600px; // 1175 - 1600px = desktop
