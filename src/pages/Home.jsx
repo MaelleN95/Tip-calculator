@@ -43,7 +43,7 @@ function Home() {
   // Form handling using react-hook-form
   const form = useForm({ mode: 'onTouched' });
   const { register, handleSubmit, formState } = form;
-  const { isDirty, isValid } = formState;
+  const { errors, isDirty, isValid } = formState;
 
   /** Function to handle form submission */
   const onSubmit = async (data) => {
@@ -161,13 +161,18 @@ function Home() {
                 </option>
               ))}
             </select>
+            <p className="error">{errors.habitualcurrency?.message}</p>
           </label>
           <label htmlFor="tipcurrency">
             Devise dans laquelle vous souhaitez faire votre pourboire
             <select
               id="tipcurrency"
               {...register('tipcurrency', {
-                required: true,
+                required: {
+                  value: true,
+                  message:
+                    'Le champ "Devise dans laquelle vous souhaitez faire votre pourboire" est obligatoire',
+                },
                 valueAsNumber: true,
               })}
               required
@@ -180,6 +185,7 @@ function Home() {
                 </option>
               ))}
             </select>
+            <p className="error">{errors.tipcurrency?.message}</p>
           </label>
 
           {/* Displaying tip indication if available */}
@@ -203,15 +209,23 @@ function Home() {
                   {...register('bill', {
                     required: {
                       value: true,
-                      message: 'Ce champ est obligatoire',
+                      message:
+                        'Le champ "Montant de l\'addition" est obligatoire',
                     },
-                    min: 0,
+                    min: {
+                      value: 1,
+                      message:
+                        "La valeur de l'addition doit être supérieure ou égale à 1",
+                    },
                     valueAsNumber: true,
                   })}
+                  required
                   defaultValue={100}
-                  min={0}
+                  step={0.001}
+                  min={1}
                 />
               </div>
+              <p className="error">{errors.bill?.message}</p>
             </label>
             <label htmlFor="percent">
               Pourcentage
@@ -223,17 +237,24 @@ function Home() {
                   {...register('percent', {
                     required: {
                       value: true,
-                      message: 'Ce champ est obligatoire',
+                      message: 'Le champ "pourcentage" est obligatoire',
                     },
-                    min: 0,
+                    min: {
+                      value: 0,
+                      message:
+                        'La valeur du pourcentage doit être supérieure ou égale à 0',
+                    },
                     max: 100,
                     valueAsNumber: true,
                   })}
+                  required
                   defaultValue={15}
+                  step={0.01}
                   min={0}
                   max={100}
                 />
               </div>
+              <p className="error">{errors.percent?.message}</p>
             </label>
             <label htmlFor="divide">
               Nombre de personnes
@@ -241,14 +262,28 @@ function Home() {
                 type="number"
                 id="divide"
                 {...register('divide', {
-                  min: 1,
-                  max: 100,
+                  required: {
+                    value: true,
+                    message: 'Le champ "nombre de personnes" est obligatoire',
+                  },
+                  min: {
+                    value: 1,
+                    message:
+                      'Le nombre de personnes doit être supérieure ou égale à 1',
+                  },
+                  max: {
+                    value: 100,
+                    message:
+                      'Le nombre de personnes doit être inférieur ou égale à 100',
+                  },
                   valueAsNumber: true,
                 })}
+                required
                 defaultValue={1}
                 min={1}
                 max={100}
               />
+              <p className="error">{errors.divide?.message}</p>
             </label>
           </div>
           <div className="center">

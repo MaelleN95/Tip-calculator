@@ -30,7 +30,8 @@
         box-shadow: 0px 0px 10px $darkblue;
       }
       &:invalid {
-        animation: heartbeat 1s infinite alternate;
+        background-color: lighten($color: red, $amount: 40);
+        animation: heartbeat 0.5s infinite alternate;
       }
     }
     & .fd-row {
@@ -97,6 +98,16 @@
     }
     & button {
       margin: 20px;
+    }
+    & .error {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      border: 0;
     }
   }
   & .results {
@@ -173,7 +184,7 @@
 
 @keyframes heartbeat {
   from {
-    color: $darkblue;
+    color: darken($color: red, $amount: 10);
   }
   to {
     color: red;
