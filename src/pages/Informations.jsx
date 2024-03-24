@@ -1,10 +1,61 @@
+import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+
 import Note from '../components/note/Note';
 import Collapse from '../components/collapse/Collapse';
+
+import { FaRegClipboard, FaCheck, FaLinkedin } from 'react-icons/fa';
 
 import countries from '../assets/countries.json';
 import allCountries from '../assets/allCountries.json';
 
 function Informations() {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      const anchor = document.getElementById(location.hash.substring(1)); // Récupérer l'élément avec l'ID de l'ancre
+      if (anchor) {
+        anchor.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }, [location]);
+
+  const [selectedCountry, setSelectedCountry] = useState('');
+  const [copied, setCopied] = useState(false);
+
+  const handleCountry = (e) => {
+    setSelectedCountry(e.target.value);
+  };
+
+  const copyToClipboard = () => {
+    const email = 'nioche.maelle@gmail.com';
+    navigator.clipboard
+      .writeText(email)
+      .then(() => {
+        setCopied(true);
+        setTimeout(() => setCopied(false), 3500);
+      })
+      .catch((error) =>
+        console.error('Erreur lors de la copie dans le presse-papiers :', error)
+      );
+  };
+
+  const onSubmit = async (data) => {
+    data.preventDefault();
+
+    setSelectedCountry(data.target.addCountry.value);
+
+    const email = 'nioche.maelle@gmail.com';
+    const subject = `Demande d'ajout du pays : ${selectedCountry}`;
+    const body = `Bonjour,\n\nJe souhaite que ${selectedCountry} soit ajouté dans le site de calculatrice de pourboire.\n\nMerci !\n\n\n\n- Email généré depuis TipCalculator -
+    \n\n- Merci de votre visite sur le site de calculatrice de pourboire ! -\n- N'hésitez pas à me contacter pour toute question ou suggestion. -\n\n- Maelle Nioche -\n- Développeuse web front-end -`;
+
+    window.location.href = `mailto:${email}?subject=${encodeURIComponent(
+      subject
+    )}&body=${encodeURIComponent(body)}`;
+  };
+
   return (
     <main className="informations">
       <h1>Informations</h1>
@@ -28,18 +79,23 @@ function Informations() {
         <h2>Objectif</h2>
         <ul>
           <li>
-            Marre de faire des recherches avant de partir en voyage pour se
-            renseigner sur la culture des pourboires de votre destination ?
+            <strong>Marre de faire des recherches</strong> avant de partir en
+            voyage pour se renseigner sur la culture des pourboires de votre
+            destination ?
           </li>
           <li>
-            Marre de devoir faire des calculs pour savoir combien vous devez
-            laisser de pourboire ?
+            <strong>Marre de devoir faire des calculs</strong> pour savoir
+            combien vous devez laisser de pourboire ?
           </li>
           <li>
-            Marre de ne pas vous y retrouver avec les différentes monnaies ?
+            <strong>Marre de ne pas vous y retrouver</strong> avec les
+            différentes monnaies ?
           </li>
         </ul>
-        <p>Ne vous inquiétez plus, cette calculatrice est faite pour vous !</p>
+        <p>
+          Ne vous inquiétez plus,{' '}
+          <strong>cette calculatrice est faite pour vous</strong> !
+        </p>
         <p>Nous avons rassemblé dans un même endroit :</p>
         <ul>
           <li>
@@ -61,32 +117,40 @@ function Informations() {
         <p>Pour utiliser la calculatrice de pourboire, rien de plus simple :</p>
         <ol>
           <li>
-            Sélectionnez votre devise habituelle, celle avec laquelle vous avez
-            l’habitude de payer dans votre pays.
+            <strong>Sélectionnez votre devise habituelle</strong>, celle avec
+            laquelle vous avez l’habitude de payer dans votre pays.
           </li>
           <li>
-            Choisissez parmi la liste la devise du pays où vous vous apprêtez à
-            faire un pourboire :
+            Choisissez parmi la liste{' '}
+            <strong>
+              la devise du pays où vous vous apprêtez à faire un pourboire
+            </strong>{' '}
+            :
             <Note direction="horizontal" openSetting={true}>
               Une fois choisie, une petite information dans le même format que
               celle-ci, s’affichera en dessous pour vous indiquer le pourcentage
-              de pourboire habituel du pays pour vous conseiller. Vous pouvez
-              choisir de suivre ces conseils, ou de choisir votre propre
-              pourcentage.
+              de pourboire habituel du pays{' '}
+              <strong>pour vous conseiller</strong>. Vous pouvez choisir de
+              suivre ces conseils, ou de sélectionner votre propre pourcentage.
             </Note>
           </li>
           <li>
-            Indiquez le montant de l’addition que vous vous apprêtez à régler.
+            Indiquez <strong>le montant de l’addition</strong> que vous vous
+            apprêtez à régler.
           </li>
           <li>
-            Indiquez le pourcentage de pourboire que vous souhaitez laisser. Par
-            défaut, le pourcentage conseillé sera choisi.
+            Indiquez le <strong>pourcentage de pourboire</strong> que vous
+            souhaitez laisser. Par défaut, le pourcentage conseillé sera choisi.
           </li>
           <li>
-            Si vous êtes plusieurs à régler l’addition et que vous souhaitez
-            partager le pourboire, indiquez le nombre de personnes.
+            Si vous êtes plusieurs à régler l’addition et que{' '}
+            <strong>vous souhaitez partager le pourboire</strong>, indiquez le
+            nombre de personnes.
           </li>
-          <li>Et enfin, cliquez sur le bouton &quot;Calculer&quot;.</li>
+          <li>
+            Et enfin, cliquez sur le bouton{' '}
+            <strong>&quot;Calculer&quot;</strong>.
+          </li>
         </ol>
       </section>
       <section id="culture">
@@ -106,26 +170,67 @@ function Informations() {
         <h2>Pour améliorer le site</h2>
         <p>
           Si vous avez des suggestions pour améliorer le site, n’hésitez pas à
-          nous contacter :
+          me contacter :
         </p>
         <ul>
-          <li>Mon LinkedIn</li>
-          <li>Mon adresse e-mail</li>
+          <li>
+            <a
+              href="https://www.linkedin.com/in/maelle-nioche/"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Ouvrir le profil LinkedIn de Maëlle Nioche dans un nouvel onglet"
+            >
+              <FaLinkedin />
+              Mon LinkedIn
+            </a>
+          </li>
+          <li className="email">
+            <button
+              onClick={copyToClipboard}
+              className={copied ? 'copied' : ''}
+            >
+              {copied ? (
+                <span className="tooltip tooltip--copied">Copié !</span>
+              ) : (
+                <span className="tooltip">
+                  Copier l&apos;email dans le presse-papier
+                </span>
+              )}
+              {copied ? <FaCheck /> : <FaRegClipboard />}
+            </button>
+            <a
+              href={`mailto:nioche.maelle@gmail.com?subject=${encodeURIComponent(
+                "Suggestion d'amélioration du site de calculatrice de pourboire"
+              )}`}
+              title="Envoyer un email à Maëlle Nioche"
+            >
+              Mon adresse e-mail
+            </a>
+          </li>
         </ul>
-        <p>
-          Si vous souhaitez qu&apos;un pays soit ajouté, sélectionnez-le dans
-          cette liste :
-        </p>
-        <form action="#">
-          <select name="addCountry" id="addCountry">
-            <option value="">-- Choisissez un pays --</option>
-            {allCountries.map((country, i) => (
-              <option key={`${country}-${i}`} value={country}>
-                {country}
-              </option>
-            ))}
-          </select>
-          <button type="submit">Je veux ce pays !</button>
+        <form onSubmit={onSubmit}>
+          <label htmlFor="addCountry">
+            Si vous souhaitez qu&apos;un pays soit ajouté, sélectionnez-le dans
+            cette liste :
+            <select
+              name="addCountry"
+              id="addCountry"
+              onChange={handleCountry}
+              required
+            >
+              <option value="">-- Choisissez un pays --</option>
+              {allCountries.map((country, i) => (
+                <option key={`${country}-${i}`} value={country}>
+                  {country}
+                </option>
+              ))}
+            </select>
+          </label>
+          <div className="center">
+            <button type="submit" disabled={!selectedCountry}>
+              Je veux ce pays !
+            </button>
+          </div>
         </form>
       </section>
     </main>

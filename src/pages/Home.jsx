@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useDatas } from '../utils/customHooks';
 
@@ -365,7 +366,12 @@ function Home() {
           plaisir !
         </p>
         <div className="center">
-          <button>Je veux ajouter un pays !</button>
+          <Link
+            to="/informations#website-improvement"
+            id="RedirectToImprovementSection"
+          >
+            Je veux ajouter un pays !
+          </Link>
         </div>
       </section>
     </main>
