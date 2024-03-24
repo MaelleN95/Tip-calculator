@@ -10,7 +10,7 @@ function Collapse({ title, flag, currencyUnit, children }) {
   };
 
   return (
-    <div>
+    <div className="collapse">
       <div
         className={
           open ? 'collapse__close collapse__close--clicked' : 'collapse__close'
