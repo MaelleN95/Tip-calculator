@@ -187,10 +187,10 @@
 
 @keyframes heartbeatLight {
   from {
-    color: darken($color: red, $amount: 10);
+    color: darken($color: rgb(166, 0, 0), $amount: 10);
   }
   to {
-    color: red;
+    color: rgb(166, 0, 0);
   }
 }
 
