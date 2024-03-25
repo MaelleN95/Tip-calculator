@@ -31,7 +31,7 @@
       }
       &:invalid {
         background-color: lighten($color: red, $amount: 40);
-        animation: heartbeat 0.5s infinite alternate;
+        animation: heartbeatLight 0.5s infinite alternate;
       }
     }
     & .fd-row {
@@ -146,6 +146,9 @@
           max-width: 700px;
         }
       }
+      & .result-in-tip-curr {
+        outline: solid 2px $darkblue;
+      }
       & h3 {
         @include general-font-settings;
         line-height: 1;
@@ -182,11 +185,54 @@
   }
 }
 
-@keyframes heartbeat {
+@keyframes heartbeatLight {
   from {
     color: darken($color: red, $amount: 10);
   }
   to {
     color: red;
+  }
+}
+
+@keyframes heartbeatDark {
+  from {
+    color: rgb(255, 0, 0);
+  }
+  to {
+    color: lighten($color: red, $amount: 25);
+  }
+}
+
+[color-theme='dark'] {
+  .calculatorblock {
+    background-color: $darkblue;
+    & .formcalculator {
+      & input,
+      select {
+        background-color: lighten($color: $darkblue, $amount: 15);
+        color: darken($color: $light, $amount: 10);
+        &:invalid {
+          background-color: darken($color: red, $amount: 40);
+          animation: heartbeatDark 0.5s infinite alternate;
+        }
+      }
+    }
+    & .results {
+      background-color: lighten($color: $dark, $amount: 3);
+      & .table {
+        background-color: $darkblue;
+        & h3 {
+          color: darken($color: $light, $amount: 10);
+        }
+        & .result {
+          color: darken($color: $light, $amount: 10);
+          background-color: lighten($color: $darkblue, $amount: 15);
+        }
+      }
+      & .result-in-tip-curr {
+        background-color: lighten($color: $darkblue, $amount: 5);
+        outline: solid 2px $lightblue;
+      }
+    }
   }
 }

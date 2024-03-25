@@ -71,3 +71,20 @@
 .copied {
   color: rgb(158, 255, 158);
 }
+
+[color-theme='dark'] {
+  .copy-to-clipboard {
+    background-color: darken($color: $light, $amount: 5);
+    color: $dark;
+    & .tooltip {
+      background-color: lighten($color: $dark, $amount: 20);
+      color: darken($color: $light, $amount: 10);
+      &::after {
+        border-top-color: lighten($color: $dark, $amount: 20);
+      }
+    }
+  }
+  .copied {
+    color: rgb(0, 146, 0);
+  }
+}

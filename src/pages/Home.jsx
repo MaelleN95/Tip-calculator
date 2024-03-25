@@ -314,7 +314,7 @@ function Home() {
             )}
 
             <div className="tables">
-              <div className="table">
+              <div className="table result-in-tip-curr">
                 <h3>Montant du pourboire</h3>
                 <p className="result">
                   <strong>

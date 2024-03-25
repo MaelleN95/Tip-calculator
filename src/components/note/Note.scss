@@ -26,8 +26,26 @@
     cursor: pointer;
     background-color: $darkblue;
     border-radius: 50%;
+    transition: all 0.2s;
     &:hover {
       color: $light;
+    }
+  }
+}
+
+[color-theme='dark'] {
+  .note {
+    &--horizontal--open {
+      border: 2px darken($color: $light, $amount: 10) solid;
+      background-color: $lightblue;
+      color: $dark;
+    }
+    &__icon {
+      color: $darkblue;
+      background-color: $light;
+      &:hover {
+        color: darken($color: $lightblue, $amount: 5);
+      }
     }
   }
 }

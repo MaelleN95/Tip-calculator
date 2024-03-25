@@ -52,7 +52,7 @@ header {
         display: grid;
         grid-template-columns: 1fr 1fr;
         text-align: center;
-        background: lighten($color: $lightblue, $amount: 7);
+        background: lighten($color: $lightblue, $amount: 3);
       }
       & a {
         margin: 0 0.9rem;
@@ -70,7 +70,7 @@ header {
           min-width: 50px;
           margin: 0;
           padding: 10px;
-          border-bottom: 4px lighten($color: $darkblue, $amount: 45) solid;
+          border-bottom: 4px darken($color: $lightblue, $amount: 2) solid;
         }
       }
       & .active {
@@ -79,7 +79,36 @@ header {
           border-bottom: 4px $darkblue solid;
           font-weight: bold;
           text-decoration: none;
-          box-shadow: inset 0 0 60px rgba($color: $light, $alpha: 0.3);
+          box-shadow: inset 0 0 60px rgba($color: $light, $alpha: 0.5);
+          border-bottom: 4px lighten($color: $darkblue, $amount: 40) solid;
+        }
+      }
+    }
+  }
+}
+
+[color-theme='dark'] {
+  header {
+    background-color: $darkblue;
+    & .navbar nav a {
+      color: darken($color: $light, $amount: 10);
+    }
+    & .calculator {
+      color: $lightblue;
+    }
+    & nav {
+      @media (max-width: $small-mobil) {
+        background: darken($color: $darkblue, $amount: 4);
+      }
+      & a {
+        @media (max-width: $small-mobil) {
+          border-bottom: 4px darken($color: $darkblue, $amount: 15) solid;
+        }
+      }
+      & .active {
+        @media (max-width: $small-mobil) {
+          box-shadow: inset 0 0 60px rgba($color: $dark, $alpha: 0.9);
+          border-bottom: 4px darken($color: $darkblue, $amount: 35) solid;
         }
       }
     }

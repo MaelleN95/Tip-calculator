@@ -99,3 +99,27 @@ footer {
     }
   }
 }
+
+[color-theme='dark'] {
+  footer {
+    background-color: $darkblue;
+    & a {
+      color: darken($color: $light, $amount: 10);
+      &:hover {
+        color: $lightblue;
+      }
+    }
+    & li a {
+      color: $lightblue;
+      &:hover {
+        color: darken($color: $light, $amount: 10);
+      }
+    }
+    & hr {
+      border-color: $lightblue;
+    }
+    & .about-development::before {
+      border-color: $lightblue;
+    }
+  }
+}
