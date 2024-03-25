@@ -17,13 +17,16 @@ footer {
     font-style: italic;
     text-align: start;
     margin: 1rem 0;
+    @media (max-width: $mobil) {
+      text-align: center;
+    }
   }
   & a {
     color: $dark;
     font-weight: bold;
-    text-decoration: none;
+    text-decoration: underline;
     &:hover {
-      text-decoration: underline;
+      text-decoration: none;
     }
   }
   & ul {
@@ -43,7 +46,7 @@ footer {
         align-items: center;
         justify-content: center;
         padding: 0.5rem;
-        transition: all 0.3s;
+        transition: all 0.2s;
         &:hover {
           color: $light;
         }

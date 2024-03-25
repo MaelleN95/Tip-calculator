@@ -1,6 +1,8 @@
 import { NavLink } from 'react-router-dom';
 import { FaEuroSign, FaCalculator } from 'react-icons/fa';
 
+import SwitchColorMode from '../switch-color-mode/SwitchColorMode';
+
 function Header() {
   return (
     <header>
@@ -15,6 +17,7 @@ function Header() {
           <NavLink to="/informations">Informations</NavLink>
         </nav>
       </div>
+      <SwitchColorMode />
     </header>
   );
 }

@@ -2,6 +2,13 @@
   @media (max-width: $mobil) {
     margin-bottom: 0;
   }
+  & ul,
+  ol {
+    @media (max-width: $mobil) {
+      padding-inline-start: 25px;
+    }
+  }
+
   & li {
     padding: 0.2rem 0;
     @media (max-width: $mobil) {

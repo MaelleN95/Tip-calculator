@@ -8,9 +8,9 @@
 @import '../components/note/Note.scss';
 @import '../components/collapse/Collapse.scss';
 @import '../components/copy-to-clipboard/CopyToClipboard.scss';
+@import '../components/switch-color-mode/SwitchColorMode.scss';
 
 :root {
-  color-scheme: light dark;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -94,4 +94,10 @@ h3 {
   75% {
     transform: translateX(2% * -1);
   }
+}
+
+// Styles for dark mode
+[color-theme='dark'] {
+  background-color: #121212;
+  color: #fff;
 }

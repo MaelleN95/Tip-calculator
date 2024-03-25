@@ -1,0 +1,54 @@
+.switch-color-mode {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: 30px;
+  @media (max-width: $mobil) {
+    right: 10px;
+  }
+  @media (max-width: $small-mobil) {
+    top: 15%;
+    right: 30px;
+  }
+  input[type='checkbox'] {
+    appearance: none;
+    width: 60px;
+    height: 35px;
+    position: relative;
+    cursor: pointer;
+    background-color: #ccc;
+    border-radius: 20px;
+    transition: background-color 0.3s;
+
+    &:before {
+      content: '';
+      position: absolute;
+      width: 31px;
+      height: 31px;
+      border-radius: 50%;
+      background-image: url(/sun.png);
+      background-color: $lightblue;
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
+      top: 2px;
+      left: 2px;
+      transform: rotate(-110deg);
+      transition: all 0.3s;
+    }
+
+    &:checked {
+      background-color: #9e9e9e;
+      &:before {
+        background-image: url(/moon.png);
+        background-color: $darkblue;
+        transform: translateX(25px) rotate(360deg);
+      }
+    }
+  }
+
+  label {
+    display: none;
+  }
+}
