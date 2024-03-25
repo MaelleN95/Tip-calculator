@@ -69,6 +69,7 @@ $px-arrow-mobil: 1.5rem;
         @media (max-width: $mobil) {
           left: 0;
           text-align: left;
+          width: auto;
         }
       }
       &::after {
@@ -123,11 +124,6 @@ $px-arrow-mobil: 1.5rem;
       font-style: italic;
     }
 
-    @media (max-width: $mobil) {
-      font-size: 12px;
-      line-height: 17px;
-    }
-
     &--hidden {
       max-height: 0;
       padding: 0 1.9rem;
@@ -136,7 +132,7 @@ $px-arrow-mobil: 1.5rem;
     }
     &--open {
       padding: 1.9rem 1.9rem;
-      max-height: 15rem;
+      max-height: 45rem;
       transition: border-radius 0.2s, max-height 0.3s, padding 0.2s;
     }
   }

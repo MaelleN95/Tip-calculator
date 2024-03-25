@@ -3,8 +3,9 @@ import { useLocation } from 'react-router-dom';
 
 import Note from '../components/note/Note';
 import Collapse from '../components/collapse/Collapse';
+import CopyToClipboard from '../components/copy-to-clipboard/CopyToClipboard';
 
-import { FaRegClipboard, FaCheck, FaLinkedin } from 'react-icons/fa';
+import { FaLinkedin } from 'react-icons/fa';
 
 import countries from '../assets/countries.json';
 import allCountries from '../assets/allCountries.json';
@@ -22,23 +23,9 @@ function Informations() {
   }, [location]);
 
   const [selectedCountry, setSelectedCountry] = useState('');
-  const [copied, setCopied] = useState(false);
 
   const handleCountry = (e) => {
     setSelectedCountry(e.target.value);
-  };
-
-  const copyToClipboard = () => {
-    const email = 'nioche.maelle@gmail.com';
-    navigator.clipboard
-      .writeText(email)
-      .then(() => {
-        setCopied(true);
-        setTimeout(() => setCopied(false), 3500);
-      })
-      .catch((error) =>
-        console.error('Erreur lors de la copie dans le presse-papiers :', error)
-      );
   };
 
   const onSubmit = async (data) => {
@@ -185,19 +172,7 @@ function Informations() {
             </a>
           </li>
           <li className="email">
-            <button
-              onClick={copyToClipboard}
-              className={copied ? 'copied' : ''}
-            >
-              {copied ? (
-                <span className="tooltip tooltip--copied">Copié !</span>
-              ) : (
-                <span className="tooltip">
-                  Copier l&apos;email dans le presse-papier
-                </span>
-              )}
-              {copied ? <FaCheck /> : <FaRegClipboard />}
-            </button>
+            <CopyToClipboard />
             <a
               href={`mailto:nioche.maelle@gmail.com?subject=${encodeURIComponent(
                 "Suggestion d'amélioration du site de calculatrice de pourboire"
