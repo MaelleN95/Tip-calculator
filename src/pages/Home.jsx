@@ -365,10 +365,7 @@ function Home() {
           plaisir !
         </p>
         <div className="center">
-          <Link
-            to="/informations#website-improvement"
-            id="RedirectToImprovementSection"
-          >
+          <Link to="/informations#website-improvement" className="redirect">
             Je veux ajouter un pays !
           </Link>
         </div>

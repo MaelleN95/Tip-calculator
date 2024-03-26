@@ -44,9 +44,77 @@
       content="Que ce soit dans votre pays ou à l'étranger, vous vous demandez combien laisser en pourboire ? Utilisez notre calculatrice de pourboire pour obtenir le montant recommandé à laisser en pourboire."
     />
     <meta name="twitter:image" content="/tip-calculator_prev.webp" />
+
+    <style>
+      body {
+        margin: 0;
+      }
+
+      .center-the-loader {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .loader {
+        width: 30vh;
+        height: 22.5vh;
+        display: flex;
+        justify-content: space-evenly;
+        position: relative;
+      }
+
+      .load__ball {
+        background-color: #1b3c6e;
+        height: 3vh;
+        width: 3vh;
+        border-radius: 50%;
+        animation: balls 0.45s backwards infinite ease alternate;
+      }
+
+      .load__ball--1 {
+        animation-delay: 0ms;
+      }
+      .load__ball--2 {
+        animation-delay: 75ms;
+      }
+      .load__ball--3 {
+        animation-delay: 150ms;
+      }
+
+      @keyframes balls {
+        0% {
+          height: 1.5vh;
+          border-radius: 100px;
+          transform: translateY(8vh) scaleX(1.5);
+        }
+        100% {
+          transform: translateY(0);
+        }
+      }
+
+      @media (prefers-color-scheme: dark) {
+        .center-the-loader {
+          background-color: #252626;
+        }
+        .load__ball {
+          background-color: #8cc8ff;
+        }
+      }
+    </style>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <div class="center-the-loader">
+        <div class="loader">
+          <div class="load__ball load__ball--1"></div>
+          <div class="load__ball load__ball--2"></div>
+          <div class="load__ball load__ball--3"></div>
+        </div>
+      </div>
+    </div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

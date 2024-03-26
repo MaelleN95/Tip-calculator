@@ -3,6 +3,7 @@
 @import './settings.scss';
 @import '../pages/Home.scss';
 @import '../pages/Informations.scss';
+@import '../pages/ErrorPage.scss';
 @import '../components/header/Header.scss';
 @import '../components/footer/Footer.scss';
 @import '../components/note/Note.scss';
@@ -15,8 +16,9 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: $light;
+  background-color: $light;
   color: $dark;
+  transition: background-color 0.2s;
 }
 
 body {
@@ -32,6 +34,7 @@ body {
     max-width: 1400px;
     margin: auto;
   }
+  transition: color 0.2s;
 }
 
 main {
@@ -67,7 +70,7 @@ select {
 .center {
   text-align: center;
   button,
-  #RedirectToImprovementSection {
+  .redirect {
     background-color: $darkblue;
     @include general-font-settings;
     @include highlight-body;
@@ -92,7 +95,7 @@ select {
       }
     }
   }
-  & #RedirectToImprovementSection {
+  & .redirect {
     padding: 15px 8%;
     text-decoration: none;
     &:hover {
@@ -124,7 +127,7 @@ select {
     }
   }
   .center button,
-  #RedirectToImprovementSection {
+  .redirect {
     background-color: $lightblue;
     color: $dark;
     &:valid {
@@ -136,7 +139,7 @@ select {
       }
     }
   }
-  .center #RedirectToImprovementSection {
+  .center .redirect {
     &:hover {
       box-shadow: inset -2px -2px 6px $darkblue, inset 2px 2px 6px $light;
     }

@@ -1,0 +1,68 @@
+.error-page {
+  & img {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    display: block;
+    padding: 50px 50px 0 50px;
+    @media (max-width: $desktop) {
+      max-width: 500px;
+      padding: 40px 40px 0 40px;
+    }
+    @media (max-width: $mobil) {
+      max-width: 70vw;
+      padding: 30px 30px 0 30px;
+    }
+    @media (max-width: $small-mobil) {
+      max-width: 80vw;
+    }
+  }
+  & p {
+    font-size: 2.9rem;
+    font-weight: bold;
+    text-align: center;
+    margin: 0.5rem 0;
+    @media (max-width: $tablet) {
+      font-size: 2.7rem;
+    }
+    @media (max-width: $mobil) {
+      font-size: 2rem;
+    }
+    @media (max-width: $small-mobil) {
+      font-size: 1.5rem;
+    }
+    & > span {
+      font-size: 3rem;
+      @media (max-width: $tablet) {
+        font-size: 2.9rem;
+      }
+      @media (max-width: $mobil) {
+        font-size: 2.3rem;
+      }
+    }
+  }
+  & .redirect {
+    margin: 1rem auto;
+    display: block;
+    max-width: 300px;
+    @media (max-width: $mobil) {
+      max-width: 250px;
+    }
+  }
+  &::after {
+    overflow: hidden;
+    width: 100%;
+    height: 122vh;
+    content: '';
+    z-index: -1;
+    top: 0;
+    left: 0;
+    position: absolute;
+    background-image: url('number.svg');
+    background-repeat: repeat;
+    background-size: 17vw;
+    background-position: 0 0, 135px 135px;
+    filter: blur(2px);
+    opacity: 0.5;
+  }
+}
