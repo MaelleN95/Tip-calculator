@@ -146,7 +146,7 @@ function Home() {
           noValidate
         >
           <label htmlFor="habitualcurrency">
-            Votre devise habituelle
+            Votre devise
             <select
               id="habitualcurrency"
               {...register('habitualcurrency', {
@@ -222,7 +222,7 @@ function Home() {
                   })}
                   required
                   defaultValue={100}
-                  step={0.001}
+                  step={0.01}
                   min={1}
                 />
               </div>
@@ -298,21 +298,6 @@ function Home() {
         {result[0] != null && (
           <section className="results">
             <h2>Résultats</h2>
-            {/* Displaying bill amount in habitual currency if different from tip currency */}
-            {result[1] !== result[2] && (
-              <Note
-                direction={'horizontal'}
-                title="Indication sur le montant de votre addition dans votre devise habituelle"
-                openSetting={true}
-              >
-                Dans votre devise, le montant de l&apos;addition vaut{' '}
-                <strong>
-                  {rounded(result[0])}
-                  {currencyUnit[0]}
-                </strong>
-              </Note>
-            )}
-
             <div className="tables">
               <div className="table result-in-tip-curr">
                 <h3>Montant du pourboire</h3>
@@ -355,6 +340,20 @@ function Home() {
                 </div>
               )}
             </div>
+            {/* Displaying bill amount in habitual currency if different from tip currency */}
+            {result[1] !== result[2] && (
+              <Note
+                direction={'horizontal'}
+                title="Indication sur le montant de votre addition dans votre devise habituelle"
+                openSetting={true}
+              >
+                Dans votre devise, le montant de l&apos;addition vaut{' '}
+                <strong>
+                  {rounded(result[0])}
+                  {currencyUnit[0]}
+                </strong>
+              </Note>
+            )}
           </section>
         )}
       </section>

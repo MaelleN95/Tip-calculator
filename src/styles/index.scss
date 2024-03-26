@@ -24,6 +24,10 @@ body {
   min-width: 320px;
   min-height: 100vh;
   @include general-font-settings;
+  ::selection {
+    background-color: #ffdd00;
+    color: $dark;
+  }
   @media (min-width: $desktop) {
     max-width: 1400px;
     margin: auto;
@@ -51,6 +55,13 @@ h2 {
 }
 h3 {
   @include title3;
+}
+
+input:focus {
+  outline: 2px solid $darkblue;
+}
+select {
+  cursor: pointer;
 }
 
 .center {
@@ -107,6 +118,10 @@ h3 {
   background-color: lighten($color: $dark, $amount: 3);
   body {
     color: darken($color: $light, $amount: 10);
+    ::selection {
+      background-color: #f0e519;
+      color: $darkblue;
+    }
   }
   .center button,
   #RedirectToImprovementSection {
@@ -128,5 +143,8 @@ h3 {
     &:active {
       box-shadow: inset -2px -2px 6px $light, inset 2px 2px 6px $darkblue;
     }
+  }
+  input:focus {
+    outline: 2px solid $lightblue;
   }
 }

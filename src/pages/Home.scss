@@ -147,7 +147,7 @@
         }
       }
       & .result-in-tip-curr {
-        outline: solid 2px $darkblue;
+        border: solid 2px $darkblue;
       }
       & h3 {
         @include general-font-settings;
@@ -231,7 +231,7 @@
       }
       & .result-in-tip-curr {
         background-color: lighten($color: $darkblue, $amount: 5);
-        outline: solid 2px $lightblue;
+        border: solid 2px $lightblue;
       }
     }
   }
