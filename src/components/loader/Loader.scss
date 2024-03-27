@@ -1,0 +1,53 @@
+.center-the-loader {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader {
+  width: 30vh;
+  height: 22.5vh;
+  display: flex;
+  justify-content: space-evenly;
+  position: relative;
+}
+
+.load__ball {
+  background-color: #1b3c6e;
+  height: 3vh;
+  width: 3vh;
+  border-radius: 50%;
+  animation: balls 0.45s backwards infinite ease alternate;
+}
+
+.load__ball--1 {
+  animation-delay: 0ms;
+}
+.load__ball--2 {
+  animation-delay: 75ms;
+}
+.load__ball--3 {
+  animation-delay: 150ms;
+}
+
+@keyframes balls {
+  0% {
+    height: 1.5vh;
+    border-radius: 100px;
+    transform: translateY(8vh) scaleX(1.5);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .center-the-loader {
+    background-color: #252626;
+  }
+  .load__ball {
+    background-color: #8cc8ff;
+  }
+}
