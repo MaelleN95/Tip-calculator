@@ -183,6 +183,9 @@
   @media (max-width: $mobil) {
     padding: 1rem;
   }
+  @media screen and (min-height: 1100px) {
+    margin: 5vh 0 8vh 0;
+  }
 }
 
 @keyframes heartbeatLight {

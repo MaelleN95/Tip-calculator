@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import { useDatas } from '../utils/customHooks';
+import { useDatas, useScreenSize } from '../utils/customHooks';
 
 import Note from '../components/note/Note';
 
@@ -35,6 +35,8 @@ function Home() {
   // Fetching currency data using "useDatas" custom hook
   const { currency } = useDatas();
 
+  // Fetching screen width using "useScreenSize" custom hook
+  const screenHeight = useScreenSize().height;
   // States for managing various aspects of the component's data
   const [result, setResult] = useState([]);
   const [currencyUnit, setcurrencyUnit] = useState([]);
@@ -102,7 +104,7 @@ function Home() {
       <Note
         direction={'vertical'}
         title="Information d'utilisation de la calcultatrice"
-        openSetting={false}
+        openSetting={screenHeight > 1100 ? true : false}
       >
         Pour utiliser la calculatrice de pourboire, rien de plus simple :
         <ol>
