@@ -32,6 +32,7 @@ function Note({ direction, children, title, openSetting }) {
       {/* Icon for indicating the note */}
       <IoMdInformationCircle
         title={title}
+        aria-label={title}
         className="note__icon"
         onClick={toggleOpen}
         tabIndex={0}

@@ -13,8 +13,22 @@ function Header() {
         </div>
 
         <nav>
-          <NavLink to="/">Calculatrice</NavLink>
-          <NavLink to="/informations">Informations</NavLink>
+          <NavLink
+            to="/"
+            className={({ isActive }) => (isActive ? 'active' : '')}
+            aria-current={({ isActive }) => (isActive ? 'page' : null)}
+            aria-label="Accueil de la calculatrice"
+          >
+            Calculatrice
+          </NavLink>
+          <NavLink
+            to="/informations"
+            className={({ isActive }) => (isActive ? 'active' : '')}
+            aria-current={({ isActive }) => (isActive ? 'page' : null)}
+            aria-label="Informations sur la calculatrice etles cultures de pourboires"
+          >
+            Informations
+          </NavLink>
         </nav>
       </div>
       <SwitchColorMode />

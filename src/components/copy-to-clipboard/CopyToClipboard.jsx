@@ -13,14 +13,15 @@ function CopyToClipboard() {
         setCopied(true);
         setTimeout(() => setCopied(false), 3500);
       })
-      .catch((error) =>
-        console.error('Erreur lors de la copie dans le presse-papiers :', error)
+      .catch(() =>
+        console.error('Erreur lors de la copie dans le presse-papiers :')
       );
   };
   return (
     <button
       onClick={copyToClipboard}
       className={copied ? 'copy-to-clipboard copied' : 'copy-to-clipboard'}
+      aria-label="Copier l'email dans le presse-papier"
     >
       {copied ? (
         <span className="tooltip tooltip--copied">Copié !</span>

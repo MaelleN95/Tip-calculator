@@ -33,8 +33,15 @@
         box-shadow: 0px 0px 10px $darkblue;
       }
       &:invalid {
-        background-color: lighten($color: red, $amount: 40);
-        animation: heartbeatLight 0.5s infinite alternate;
+        color: rgba(0, 0, 0, 0.5);
+      }
+      // hide arrow
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        margin: 0;
       }
     }
     & .fd-row {
@@ -68,14 +75,6 @@
           padding: 0;
           width: 100%;
           text-align: center;
-        }
-        // hide arrow
-        &::-webkit-outer-spin-button,
-        &::-webkit-inner-spin-button {
-          -webkit-appearance: none;
-          -moz-appearance: none;
-          appearance: none;
-          margin: 0;
         }
       }
       & > span {
@@ -230,24 +229,6 @@
   @media (max-width: $small-mobil) {
     height: 200px;
     bottom: -200px;
-  }
-}
-
-@keyframes heartbeatLight {
-  from {
-    color: darken($color: rgb(166, 0, 0), $amount: 10);
-  }
-  to {
-    color: rgb(166, 0, 0);
-  }
-}
-
-@keyframes heartbeatDark {
-  from {
-    color: rgb(255, 0, 0);
-  }
-  to {
-    color: lighten($color: red, $amount: 12);
   }
 }
 

@@ -67,7 +67,7 @@ function Footer() {
           .
         </p>
         <p>
-          Retrouvez plus d&apos;llustrations sur{' '}
+          Retrouvez plus d&apos;illustrations sur{' '}
           <a
             href="https://storyset.com/"
             target="_blank"

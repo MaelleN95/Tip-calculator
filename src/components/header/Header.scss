@@ -74,13 +74,13 @@ header {
           min-width: 50px;
           margin: 0;
           padding: 10px;
-          border-bottom: 4px darken($color: $lightblue, $amount: 2) solid;
+          border-bottom: 2px transparent solid;
         }
       }
       & .active {
         text-decoration: underline;
         @media (max-width: $small-mobil) {
-          border-bottom: 4px $darkblue solid;
+          border-bottom: 2px $darkblue solid;
           font-weight: bold;
           text-decoration: none;
           color: $dark;
@@ -102,16 +102,17 @@ header {
     }
     & nav {
       @media (max-width: $small-mobil) {
-        background: darken($color: $darkblue, $amount: 4);
+        @include reverse-button-dark;
       }
       & a {
         @media (max-width: $small-mobil) {
-          border-bottom: 4px darken($color: $darkblue, $amount: 15) solid;
+          border-bottom: 2px transparent solid;
         }
       }
       & .active {
         @media (max-width: $small-mobil) {
-          border-bottom: 4px darken($color: $darkblue, $amount: 35) solid;
+          border-bottom: 2px rgba($color: $lightblue, $alpha: 0.8) solid;
+          @include active-button-dark;
         }
       }
     }

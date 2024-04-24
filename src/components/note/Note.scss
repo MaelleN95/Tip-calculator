@@ -14,7 +14,7 @@
     &--open {
       border: 2px $dark solid;
       border-radius: 10px;
-      background-color: $light;
+      @include bg-light;
     }
   }
   &__icon {
@@ -37,7 +37,7 @@
   .note {
     &--horizontal--open {
       border: 2px darken($color: $light, $amount: 10) solid;
-      background-color: $lightblue;
+      @include bg-lightblue;
       color: $dark;
     }
     &__icon {

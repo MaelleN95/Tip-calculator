@@ -372,7 +372,7 @@ function Home() {
         </div>
         <img
           src="/Coffee-shop-pana.svg"
-          alt="Illustration d’un café avec deux personnes assises à une table, l’une buvant du café et l’autre en conversation, et un barista derrière le comptoir avec une machine à café."
+          alt="Deux personnes assises à une table buvant du café dans un Coffee Shop."
           className="coffee-shop-cover"
         />
       </section>

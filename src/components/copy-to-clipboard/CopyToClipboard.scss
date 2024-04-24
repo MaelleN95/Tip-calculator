@@ -19,6 +19,7 @@
   }
   &:hover {
     background-color: $dark;
+    color: $lightblue;
     & .tooltip {
       opacity: 1;
       visibility: visible;
@@ -70,6 +71,9 @@
 }
 .copied {
   color: rgb(158, 255, 158);
+  &:hover {
+    color: rgb(0, 255, 0);
+  }
 }
 
 [color-theme='dark'] {
@@ -81,6 +85,12 @@
       color: darken($color: $light, $amount: 10);
       &::after {
         border-top-color: lighten($color: $dark, $amount: 20);
+        @media (max-width: $mobil) {
+          border-top-color: transparent;
+          border-bottom-color: lighten($color: $dark, $amount: 20);
+          bottom: 100%;
+          top: auto;
+        }
       }
     }
   }

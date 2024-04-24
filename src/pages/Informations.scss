@@ -20,9 +20,8 @@
     @include bg-darkblue;
     padding: 1rem 2rem;
     border-radius: 10px;
-    width: 25vw;
+    width: auto;
     @media (max-width: $desktop) {
-      width: 100%;
       border-radius: 0;
     }
     & a {
@@ -131,15 +130,15 @@
     position: relative;
     background: linear-gradient(#63b3ff, #5eaef8 60%, #8cc8ff);
     margin-bottom: 0;
-    margin-top: 320px;
+    margin-top: 330px;
     @media (min-width: $desktop) {
-      margin-top: 370px;
+      margin-top: 380px;
     }
     @media (max-width: $mobil) {
-      margin-top: 220px;
+      margin-top: 230px;
     }
     @media (max-width: $small-mobil) {
-      margin-top: 140px;
+      margin-top: 150px;
     }
     & .coffee-shop-cover {
       bottom: auto;

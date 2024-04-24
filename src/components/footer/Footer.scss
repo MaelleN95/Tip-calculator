@@ -49,6 +49,7 @@ footer {
         transition: all 0.2s;
         &:hover {
           color: $light;
+          transform: translateY(-2px);
         }
       }
     }
