@@ -4,9 +4,6 @@ header {
   padding: 10px 20px;
   @include bg-lightblue;
   position: relative;
-  @media (min-width: $desktop) {
-    border-radius: 0 0 10px 10px;
-  }
   @media (max-width: $small-mobil) {
     justify-content: center;
     padding: 0;

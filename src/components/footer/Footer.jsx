@@ -5,7 +5,18 @@ function Footer() {
     <footer>
       <section className="about-development">
         <div className="about-development--text">
-          <p>Développé par Maëlle Nioche © {new Date().getFullYear()}</p>
+          <p>
+            Développé par{' '}
+            <a
+              href="https://maelle-nioche.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Ouvrir le site web de Maëlle Nioche dans un nouvel onglet"
+            >
+              Maëlle Nioche
+            </a>{' '}
+            © 2024
+          </p>
           <p>
             Ce site est open source et ne récolte aucune donnée. Consultez le
             code source sur{' '}

@@ -31,14 +31,16 @@ body {
     color: $dark;
   }
   @media (min-width: $desktop) {
-    max-width: 1400px;
     margin: auto;
   }
   transition: color 0.2s;
 }
 
 main {
-  margin: 2rem 0;
+  margin: 2rem auto;
+  @media (min-width: $desktop) {
+    max-width: 1400px;
+  }
   @media (max-width: $mobil) {
     margin: 1rem 0;
   }

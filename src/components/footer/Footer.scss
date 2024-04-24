@@ -4,9 +4,6 @@ footer {
   flex-direction: column;
   padding: 10px 20px;
   font-size: 1rem;
-  @media (min-width: $desktop) {
-    border-radius: 10px 10px 0 0;
-  }
   @media (max-width: $mobil) {
     font-size: 0.8rem;
     flex-direction: column;
