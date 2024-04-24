@@ -43,6 +43,10 @@
         appearance: none;
         margin: 0;
       }
+      &[type='number'] {
+        -moz-appearance: textfield;
+        -webkit-appearance: textfield;
+      }
     }
     & .fd-row {
       display: flex;
