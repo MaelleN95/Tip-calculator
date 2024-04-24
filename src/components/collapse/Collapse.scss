@@ -21,7 +21,7 @@ $px-arrow-mobil: 1.5rem;
   &__close {
     position: relative;
     cursor: pointer;
-    background-color: $darkblue;
+    @include bg-darkblue;
     color: white;
     @include padding-collapse-close;
     display: grid;
@@ -62,16 +62,7 @@ $px-arrow-mobil: 1.5rem;
 
     &--clicked {
       border-radius: 10px 10px 0 0;
-      & > h3 {
-        width: 12rem;
-        left: calc(50% - 6rem);
-        text-align: center;
-        @media (max-width: $mobil) {
-          left: 0;
-          text-align: left;
-          width: auto;
-        }
-      }
+
       &::after {
         left: calc(50% - 50% / 2);
         width: 50%;
@@ -112,7 +103,7 @@ $px-arrow-mobil: 1.5rem;
     }
   }
   &__txt {
-    background-color: $lightblue;
+    @include bg-lightblue;
     color: $dark;
     line-height: 25px;
     border-radius: 0 0 10px 10px;
@@ -128,12 +119,12 @@ $px-arrow-mobil: 1.5rem;
       max-height: 0;
       padding: 0 1.9rem;
       border-radius: 10px;
-      transition: border-radius 0.2s, max-height 0.3s, padding 0.2s;
+      transition: border-radius 0.2s, max-height 0.2s, padding 0.2s;
     }
     &--open {
       padding: 1.9rem 1.9rem;
       max-height: 45rem;
-      transition: border-radius 0.2s, max-height 0.3s, padding 0.2s;
+      transition: border-radius 0.2s, max-height 0.2s, padding 0.2s;
     }
   }
 }
@@ -141,7 +132,7 @@ $px-arrow-mobil: 1.5rem;
 [color-theme='dark'] {
   .collapse {
     &__close {
-      background-color: $lightblue;
+      @include bg-lightblue;
       color: $dark;
       &::after {
         background-color: $dark;
@@ -151,7 +142,7 @@ $px-arrow-mobil: 1.5rem;
       }
     }
     &__txt {
-      background-color: $darkblue;
+      @include bg-darkblue;
       color: darken($color: $light, $amount: 10);
     }
   }

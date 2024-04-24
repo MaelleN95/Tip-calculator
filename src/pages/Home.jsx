@@ -99,7 +99,7 @@ function Home() {
   };
 
   return (
-    <main>
+    <main className="homepage-main">
       <h1>Calculatrice de pourboire</h1>
       <Note
         direction={'vertical'}
@@ -205,7 +205,7 @@ function Home() {
             <label htmlFor="bill">
               Montant de l&apos;addition
               <div className="input-and-unit">
-                <span>{currencyUnit[2]}</span>
+                <span>{currencyUnit[2] ? currencyUnit[2] : '€'}</span>
                 <input
                   type="number"
                   id="bill"
@@ -295,70 +295,69 @@ function Home() {
             </button>
           </div>
         </form>
-
-        {/* Displaying results */}
-        {result[0] != null && (
-          <section className="results">
-            <h2>Résultats</h2>
-            <div className="tables">
-              <div className="table result-in-tip-curr">
-                <h3>Montant du pourboire</h3>
+      </section>
+      {/* Displaying results */}
+      {result[0] != null && (
+        <section className="results">
+          <h2>Résultats</h2>
+          <div className="tables">
+            <div className="table result-in-tip-curr">
+              <h3>Montant du pourboire</h3>
+              <p className="result">
+                <strong>
+                  {rounded(result[2])}
+                  {currencyUnit[1]}
+                </strong>
+              </p>
+              {/* Displaying tip per person if more than one person */}
+              {NbPersons !== 1 && (
+                <>
+                  <p className="dividedTipTitle">Par personne</p>
+                  <p className="result">
+                    <strong>
+                      {rounded(result[2] / NbPersons)}
+                      {currencyUnit[1]}
+                    </strong>
+                  </p>
+                </>
+              )}
+            </div>
+            {result[1] !== result[2] && (
+              <div className="table">
+                <h3>Dans votre devise</h3>
                 <p className="result">
-                  <strong>
-                    {rounded(result[2])}
-                    {currencyUnit[1]}
-                  </strong>
+                  {rounded(result[1])}
+                  {currencyUnit[0]}
                 </p>
                 {/* Displaying tip per person if more than one person */}
                 {NbPersons !== 1 && (
                   <>
                     <p className="dividedTipTitle">Par personne</p>
                     <p className="result">
-                      <strong>
-                        {rounded(result[2] / NbPersons)}
-                        {currencyUnit[1]}
-                      </strong>
+                      {rounded(result[1] / NbPersons)}
+                      {currencyUnit[0]}
                     </p>
                   </>
                 )}
               </div>
-              {result[1] !== result[2] && (
-                <div className="table">
-                  <h3>Dans votre devise</h3>
-                  <p className="result">
-                    {rounded(result[1])}
-                    {currencyUnit[0]}
-                  </p>
-                  {/* Displaying tip per person if more than one person */}
-                  {NbPersons !== 1 && (
-                    <>
-                      <p className="dividedTipTitle">Par personne</p>
-                      <p className="result">
-                        {rounded(result[1] / NbPersons)}
-                        {currencyUnit[0]}
-                      </p>
-                    </>
-                  )}
-                </div>
-              )}
-            </div>
-            {/* Displaying bill amount in habitual currency if different from tip currency */}
-            {result[1] !== result[2] && (
-              <Note
-                direction={'horizontal'}
-                title="Indication sur le montant de votre addition dans votre devise habituelle"
-                openSetting={true}
-              >
-                Dans votre devise, le montant de l&apos;addition vaut{' '}
-                <strong>
-                  {rounded(result[0])}
-                  {currencyUnit[0]}
-                </strong>
-              </Note>
             )}
-          </section>
-        )}
-      </section>
+          </div>
+          {/* Displaying bill amount in habitual currency if different from tip currency */}
+          {result[1] !== result[2] && (
+            <Note
+              direction={'horizontal'}
+              title="Indication sur le montant de votre addition dans votre devise habituelle"
+              openSetting={true}
+            >
+              Dans votre devise, le montant de l&apos;addition vaut{' '}
+              <strong>
+                {rounded(result[0])}
+                {currencyUnit[0]}
+              </strong>
+            </Note>
+          )}
+        </section>
+      )}
 
       {/* Section for adding a new country */}
       <section className="countryask">
@@ -371,6 +370,11 @@ function Home() {
             Je veux ajouter un pays !
           </Link>
         </div>
+        <img
+          src="/Coffee-shop-pana.svg"
+          alt="Illustration d’un café avec deux personnes assises à une table, l’une buvant du café et l’autre en conversation, et un barista derrière le comptoir avec une machine à café."
+          className="coffee-shop-cover"
+        />
       </section>
     </main>
   );

@@ -55,7 +55,6 @@ function Footer() {
           strictement interdite.
         </p>
         <p>
-          {' '}
           Retrouvez plus de taux sur{' '}
           <a
             href="https://taux.live/"
@@ -64,6 +63,18 @@ function Footer() {
             title='Ouvrir le site "taux.live" dans un nouvel onglet'
           >
             taux.live
+          </a>
+          .
+        </p>
+        <p>
+          Retrouvez plus d&apos;llustrations sur{' '}
+          <a
+            href="https://storyset.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            title='Ouvrir le site "storyset" dans un nouvel onglet'
+          >
+            Storyset
           </a>
           .
         </p>

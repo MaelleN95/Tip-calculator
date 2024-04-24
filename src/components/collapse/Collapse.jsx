@@ -17,7 +17,7 @@ function Collapse({ title, flag, currencyUnit, children }) {
         }
         onClick={toggleOpen}
       >
-        <img src={flag} alt={`Drapeau ${title}`} />
+        <img src={flag} alt={`Drapeau ${title}`} loading="lazy" />
         <h3>{title}</h3>
 
         <FaChevronDown

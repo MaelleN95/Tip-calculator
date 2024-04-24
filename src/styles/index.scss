@@ -16,13 +16,13 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: $light;
+  @include bg-light;
   color: $dark;
-  transition: background-color 0.2s;
 }
 
 body {
   margin: 0;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
   min-width: 320px;
   min-height: 100vh;
   @include general-font-settings;
@@ -38,7 +38,7 @@ body {
 }
 
 main {
-  margin: 2rem;
+  margin: 2rem 0;
   @media (max-width: $mobil) {
     margin: 1rem 0;
   }
@@ -60,8 +60,13 @@ h3 {
   @include title3;
 }
 
-input:focus {
-  outline: 2px solid $darkblue;
+input {
+  border: 1px solid $darkblue;
+}
+
+input:focus,
+select:focus {
+  outline: 1px solid $darkblue;
 }
 select {
   cursor: pointer;
@@ -71,7 +76,7 @@ select {
   text-align: center;
   button,
   .redirect {
-    background-color: $darkblue;
+    @include button-dark;
     @include general-font-settings;
     @include highlight-body;
     color: $light;
@@ -81,10 +86,10 @@ select {
     cursor: pointer;
     &:valid {
       &:hover {
-        box-shadow: inset -2px -2px 6px $dark, inset 2px 2px 6px $lightblue;
+        @include reverse-button-dark;
       }
       &:active {
-        box-shadow: inset -2px -2px 6px $lightblue, inset 2px 2px 6px $dark;
+        @include active-button-dark;
       }
     }
     &:disabled {
@@ -99,10 +104,10 @@ select {
     padding: 15px 8%;
     text-decoration: none;
     &:hover {
-      box-shadow: inset -2px -2px 6px $dark, inset 2px 2px 6px $lightblue;
+      @include reverse-button-dark;
     }
     &:active {
-      box-shadow: inset -2px -2px 6px $lightblue, inset 2px 2px 6px $dark;
+      @include active-button-dark;
     }
   }
 }
@@ -118,7 +123,7 @@ select {
 
 // Styles for dark mode
 [color-theme='dark'] {
-  background-color: lighten($color: $dark, $amount: 3);
+  @include bg-dark;
   body {
     color: darken($color: $light, $amount: 10);
     ::selection {
@@ -128,26 +133,26 @@ select {
   }
   .center button,
   .redirect {
-    background-color: $lightblue;
+    @include button-light;
     color: $dark;
     &:valid {
       &:hover {
-        box-shadow: inset -2px -2px 6px $darkblue, inset 2px 2px 6px $light;
+        @include reverse-button-light;
       }
       &:active {
-        box-shadow: inset -2px -2px 6px $light, inset 2px 2px 6px $darkblue;
+        @include active-button-light;
       }
     }
   }
   .center .redirect {
     &:hover {
-      box-shadow: inset -2px -2px 6px $darkblue, inset 2px 2px 6px $light;
+      @include reverse-button-light;
     }
     &:active {
-      box-shadow: inset -2px -2px 6px $light, inset 2px 2px 6px $darkblue;
+      @include active-button-light;
     }
   }
   input:focus {
-    outline: 2px solid $lightblue;
+    outline: 1px solid $lightblue;
   }
 }

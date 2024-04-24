@@ -1,5 +1,5 @@
 footer {
-  background-color: $lightblue;
+  @include bg-lightblue;
   display: flex;
   flex-direction: column;
   padding: 10px 20px;
@@ -102,7 +102,7 @@ footer {
 
 [color-theme='dark'] {
   footer {
-    background-color: $darkblue;
+    @include bg-darkblue;
     & a {
       color: darken($color: $light, $amount: 10);
       &:hover {

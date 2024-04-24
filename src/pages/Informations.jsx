@@ -64,40 +64,52 @@ function Informations() {
       </nav>
       <section id="goal">
         <h2>Objectif</h2>
-        <ul>
-          <li>
-            <strong>Marre de faire des recherches</strong> avant de partir en
-            voyage pour se renseigner sur la culture des pourboires de votre
-            destination ?
-          </li>
-          <li>
-            <strong>Marre de devoir faire des calculs</strong> pour savoir
-            combien vous devez laisser de pourboire ?
-          </li>
-          <li>
-            <strong>Marre de ne pas vous y retrouver</strong> avec les
-            différentes monnaies ?
-          </li>
-        </ul>
+        <div>
+          <ul>
+            <li>
+              <strong>Marre de faire des recherches</strong> avant de partir en
+              voyage pour se renseigner sur la culture des pourboires de votre
+              destination ?
+            </li>
+            <li>
+              <strong>Marre de devoir faire des calculs</strong> pour savoir
+              combien vous devez laisser de pourboire ?
+            </li>
+            <li>
+              <strong>Marre de ne pas vous y retrouver</strong> avec les
+              différentes monnaies ?
+            </li>
+          </ul>
+          <img
+            src="/currency-animed-negative.svg"
+            alt="Un homme qui se questionne devant une calculatrice"
+          />
+        </div>
         <p>
           Ne vous inquiétez plus,{' '}
           <strong>cette calculatrice est faite pour vous</strong> !
         </p>
         <p>Nous avons rassemblé dans un même endroit :</p>
-        <ul>
-          <li>
-            les <strong>recherches sur la culture des pourboires</strong> de vos
-            destinations favorites pour ainsi vous <strong>conseiller</strong>{' '}
-            sur les bonnes pratiques,
-          </li>
-          <li>
-            la possibilité de <strong>calculer un pourboire</strong> avec le
-            pourcentage que vous souhaitez,
-          </li>
-          <li>
-            et la <strong>conversion dans votre devise</strong>.
-          </li>
-        </ul>
+        <div>
+          <img
+            src="/currency-animed-positive.svg"
+            alt="Une femme qui sourit entourée de symboles de devises"
+          />
+          <ul>
+            <li>
+              les <strong>recherches sur la culture des pourboires</strong> de
+              vos destinations favorites pour ainsi vous{' '}
+              <strong>conseiller</strong> sur les bonnes pratiques,
+            </li>
+            <li>
+              la possibilité de <strong>calculer un pourboire</strong> avec le
+              pourcentage que vous souhaitez,
+            </li>
+            <li>
+              et la <strong>conversion dans votre devise</strong>.
+            </li>
+          </ul>
+        </div>
       </section>
       <section id="operation">
         <h2>Comment fonctionne la calculatrice ?</h2>
@@ -154,6 +166,11 @@ function Informations() {
         ))}
       </section>
       <section id="website-improvement">
+        <img
+          src="/Coffee-shop-pana.svg"
+          alt="Illustration d’un café avec deux personnes assises à une table, l’une buvant du café et l’autre en conversation, et un barista derrière le comptoir avec une machine à café."
+          className="coffee-shop-cover"
+        />
         <h2>Pour améliorer le site</h2>
         <p>
           Si vous avez des suggestions pour améliorer le site, n’hésitez pas à

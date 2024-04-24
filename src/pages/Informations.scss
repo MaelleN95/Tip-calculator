@@ -1,7 +1,8 @@
 .informations {
-  @media (max-width: $mobil) {
+  @media (max-width: $desktop) {
     margin-bottom: 0;
   }
+
   & ul,
   ol {
     @media (max-width: $mobil) {
@@ -16,19 +17,13 @@
     }
   }
   & .table-of-contents {
-    background-color: $darkblue;
+    @include bg-darkblue;
     padding: 1rem 2rem;
     border-radius: 10px;
     width: 25vw;
     @media (max-width: $desktop) {
-      width: 35vw;
-    }
-    @media (max-width: $tablet) {
-      width: 46vw;
-    }
-    @media (max-width: $mobil) {
-      width: 80%;
-      margin: auto;
+      width: 100%;
+      border-radius: 0;
     }
     & a {
       text-decoration: none;
@@ -64,7 +59,7 @@
     margin-top: 20px;
     padding: 20px;
     border-radius: 10px;
-    background-color: $light;
+    @include bg-light;
     & label {
       width: 100%;
       margin: auto;
@@ -76,8 +71,7 @@
         @include general-font-settings;
         padding: 0 10px;
         height: 40px;
-        border-radius: 10px;
-        border: 0;
+        border-radius: 5px;
         color: $dark;
         background-color: $lightblue;
         &:focus {
@@ -93,28 +87,69 @@
   & #goal,
   #operation,
   #website-improvement {
-    background-color: $lightblue;
+    @include bg-lightblue;
     padding: 1.5rem;
-    border-radius: 10px;
+    border-radius: 7px;
     margin: 2rem 0;
+    @media (max-width: $desktop) {
+      border-radius: 0;
+    }
     @media (max-width: $mobil) {
       border-radius: 0;
       margin: 1rem 0;
     }
   }
   & #goal {
+    background: none;
     @media (max-width: $mobil) {
       background-color: transparent;
     }
+    & div {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      @media (max-width: $mobil) {
+        flex-direction: column;
+      }
+    }
+    & img {
+      max-height: 300px;
+      @media (max-width: $small-mobil) {
+        max-height: 200px;
+      }
+    }
   }
   & #culture {
+    @media (max-width: $desktop) {
+      padding: 1.5rem;
+    }
     @media (max-width: $mobil) {
       margin: 7px;
     }
   }
   & #website-improvement {
+    position: relative;
+    background: linear-gradient(#63b3ff, #5eaef8 60%, #8cc8ff);
+    margin-bottom: 0;
+    margin-top: 320px;
+    @media (min-width: $desktop) {
+      margin-top: 370px;
+    }
     @media (max-width: $mobil) {
-      margin-bottom: 0;
+      margin-top: 220px;
+    }
+    @media (max-width: $small-mobil) {
+      margin-top: 140px;
+    }
+    & .coffee-shop-cover {
+      bottom: auto;
+      top: -368px;
+      @media (max-width: $mobil) {
+        top: -258px;
+      }
+      @media (max-width: $small-mobil) {
+        top: -184px;
+      }
     }
   }
 }
@@ -165,22 +200,21 @@
 [color-theme='dark'] {
   .informations {
     & .table-of-contents {
-      background-color: $lightblue;
+      @include bg-lightblue;
       & li a {
         color: $dark;
       }
     }
     form {
-      background-color: lighten($color: $dark, $amount: 3);
+      @include bg-dark;
       & select {
         background-color: lighten($color: $darkblue, $amount: 20);
         color: darken($color: $light, $amount: 10);
       }
     }
-    & #goal,
-    #operation,
+    & #operation,
     #website-improvement {
-      background-color: $darkblue;
+      @include bg-darkblue;
     }
     & #goal {
       @media (max-width: $mobil) {

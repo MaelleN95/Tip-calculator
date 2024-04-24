@@ -1,9 +1,13 @@
 .calculatorblock {
-  background-color: $lightblue;
-  border-radius: 10px;
+  background: linear-gradient(#63b3ff, #5eaef8 60%, #8cc8ff);
+  border-radius: 8px;
   padding: 2rem;
-  @media (max-width: $mobil) {
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.0588235294),
+    0 1px 3px 0 rgba(0, 0, 0, 0.1019607843);
+  @media (max-width: $desktop) {
     border-radius: 0;
+  }
+  @media (max-width: $mobil) {
     padding: 1rem;
   }
   & .note {
@@ -22,10 +26,9 @@
       @include general-font-settings;
       padding: 0 10px;
       height: 40px;
-      border-radius: 10px;
-      border: 0;
+      border-radius: 5px;
       color: $dark;
-      background-color: $light;
+      @include bg-light;
       &:focus {
         box-shadow: 0px 0px 10px $darkblue;
       }
@@ -110,81 +113,123 @@
       border: 0;
     }
   }
-  & .results {
-    padding: 2rem;
-    max-width: calc(1100px - 4rem);
-    margin: auto;
-    background-color: $light;
-    border-radius: 10px;
+}
+
+.results {
+  padding: 2rem;
+  margin: 1rem auto;
+  @include bg-darkblue;
+  border-radius: 10px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.0588235294),
+    0 1px 3px 0 rgba(0, 0, 0, 0.1019607843);
+  @media (max-width: $desktop) {
+    margin: 0 auto;
+    border-radius: 0;
+  }
+  @media (max-width: $mobil) {
+    padding: 1rem;
+  }
+  & .note {
+    margin: 3rem auto 1rem auto;
+    max-width: calc(1100px - 1.4rem);
     @media (max-width: $mobil) {
-      padding: 1rem;
+      margin: 2rem auto 1rem auto;
     }
-    & h2 {
-      margin-top: 0;
+  }
+  & h2 {
+    margin-top: 0;
+    color: $light;
+  }
+  & .tables {
+    max-width: 1100px;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    @media (max-width: $mobil) {
+      flex-direction: column;
     }
-    & .tables {
+    & .table {
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
       justify-content: space-between;
-      align-items: center;
-      gap: 20px;
+      width: 100%;
+      @include bg-lightblue;
+      padding: 20px 40px;
+      border-radius: 10px;
       @media (max-width: $mobil) {
-        flex-direction: column;
+        width: calc(100% - 80px);
+        max-width: 700px;
       }
-      & .table {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        margin: auto;
-        width: 100%;
-        max-width: 500px;
-        background-color: $lightblue;
-        padding: 20px 40px;
-        border-radius: 10px;
-        @media (max-width: $mobil) {
-          width: calc(100% - 80px);
-          max-width: 700px;
-        }
-      }
-      & .result-in-tip-curr {
-        border: solid 2px $darkblue;
-      }
-      & h3 {
-        @include general-font-settings;
-        line-height: 1;
-        font-weight: bold;
-        text-align: center;
-        margin: 0;
-      }
-      & p {
-        margin: 0;
-        margin: 0.8rem 0;
-      }
-      & .dividedTipTitle {
-        margin: 0.5rem 0 0 0;
-      }
-      & .result {
-        display: flex;
-        align-items: center;
-        width: calc(100% - 30px);
-        padding: 0 15px;
-        height: 40px;
-        border-radius: 10px;
-        border: 0;
-        color: $dark;
-        background-color: $light;
-      }
+    }
+    & .result-in-tip-curr {
+      border: solid 2px $darkblue;
+    }
+    & h3 {
+      @include general-font-settings;
+      line-height: 1;
+      font-weight: bold;
+      text-align: center;
+      margin: 0;
+    }
+    & p {
+      margin: 0;
+      margin: 0.8rem 0;
+    }
+    & .dividedTipTitle {
+      margin: 0.5rem 0 0 0;
+    }
+    & .result {
+      display: flex;
+      align-items: center;
+      width: calc(100% - 30px);
+      padding: 0 15px;
+      height: 40px;
+      border-radius: 10px;
+      border: 0;
+      color: $dark;
+      @include bg-light;
     }
   }
 }
 
 .countryask {
   text-align: center;
+  padding: 1.5rem 0;
+  position: relative;
   @media (max-width: $mobil) {
     padding: 1rem;
   }
   @media screen and (min-height: 1100px) {
     margin: 5vh 0 8vh 0;
+  }
+}
+.homepage-main {
+  position: relative;
+  margin-bottom: 368px;
+  @media (max-width: $mobil) {
+    margin-bottom: 276px;
+  }
+  @media (max-width: $small-mobil) {
+    margin-bottom: 184px;
+  }
+}
+
+.coffee-shop-cover {
+  position: absolute;
+  bottom: -400px;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 400px;
+  @media (max-width: $mobil) {
+    height: 280px;
+    bottom: -300px;
+  }
+  @media (max-width: $small-mobil) {
+    height: 200px;
+    bottom: -200px;
   }
 }
 
@@ -202,40 +247,46 @@
     color: rgb(255, 0, 0);
   }
   to {
-    color: lighten($color: red, $amount: 25);
+    color: lighten($color: red, $amount: 12);
   }
 }
 
 [color-theme='dark'] {
   .calculatorblock {
-    background-color: $darkblue;
+    @include bg-darkblue;
     & .formcalculator {
       & input,
       select {
-        background-color: lighten($color: $darkblue, $amount: 15);
+        background: linear-gradient(#26559d, #1b4b92 60%, #184793);
         color: darken($color: $light, $amount: 10);
+        background-color: $dark;
         &:invalid {
           background-color: darken($color: red, $amount: 40);
           animation: heartbeatDark 0.5s infinite alternate;
         }
       }
     }
-    & .results {
-      background-color: lighten($color: $dark, $amount: 3);
-      & .table {
-        background-color: $darkblue;
-        & h3 {
-          color: darken($color: $light, $amount: 10);
-        }
-        & .result {
-          color: darken($color: $light, $amount: 10);
-          background-color: lighten($color: $darkblue, $amount: 15);
-        }
+  }
+  .results {
+    background: none;
+    border: 3px solid $lightblue;
+    @media (max-width: $desktop) {
+      border: 0;
+      border-bottom: 3px solid $lightblue;
+    }
+    & .table {
+      @include bg-darkblue;
+      & h3 {
+        color: darken($color: $light, $amount: 10);
       }
-      & .result-in-tip-curr {
-        background-color: lighten($color: $darkblue, $amount: 5);
-        border: solid 2px $lightblue;
+      & .result {
+        color: $light;
+        background: linear-gradient(#26559d, #1b4b92 60%, #184793);
       }
+    }
+    & .result-in-tip-curr {
+      background-color: lighten($color: $darkblue, $amount: 5);
+      border: solid 2px $lightblue;
     }
   }
 }

@@ -64,3 +64,38 @@ $small-mobil: 425px; // 425 and less = small mobil
     font-size: 1rem;
   }
 }
+
+@mixin bg-light {
+  background: linear-gradient(#fcfcfc, #f1f1f1 60%, #f8f8f8);
+}
+@mixin bg-dark {
+  background: linear-gradient(#101010, #0f0f0f 60%, #1d1e1e);
+}
+
+@mixin bg-lightblue {
+  background: linear-gradient(#8cc8ff, #5eaef8 60%, #63b3ff);
+}
+@mixin bg-darkblue {
+  background: linear-gradient(#1b3c6e, #0d274f 60%, #0b2650);
+}
+
+@mixin button-light {
+  background: linear-gradient(#8cc8ff, #78beff 60%, #46a6ff);
+}
+@mixin button-dark {
+  background: linear-gradient(#1b3c6e, #102a51 60%, #091e3e);
+}
+
+@mixin reverse-button-light {
+  background: linear-gradient(#46a6ff, #78beff 60%, #8cc8ff);
+}
+@mixin reverse-button-dark {
+  background: linear-gradient(#091e3e, #102a51 60%, #1b3c6e);
+}
+
+@mixin active-button-light {
+  background: linear-gradient(#2589e6, #4aa8ff 60%, #6fb9ff);
+}
+@mixin active-button-dark {
+  background: linear-gradient(#04122b, #081f42 60%, #0f3266);
+}

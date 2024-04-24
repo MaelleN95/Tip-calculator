@@ -11,7 +11,7 @@ export function useDatas() {
   // Function to fetch data from API
   const fetchData = async () => {
     try {
-      const res = await fetch('https://cdn.taux.live/api/latest.json');
+      // const res = await fetch('https://cdn.taux.live/api/latest.json');
       if (!res.ok) {
         throw new Error('Failed to fetch datas');
       }
@@ -28,19 +28,14 @@ export function useDatas() {
   // Function to update currency data based on fetched data
   const updateDatas = () => {
     try {
-      // Extracting country codes from countries.json
-      const countryCodes = countries.map((country) => country.code);
-
-      // Filtering fetched data based on country codes
-      const filteredDatas = Object.entries(datas).filter(([code]) =>
-        countryCodes.includes(code)
-      );
-
       // Mapping filtered data to match country data structure
       const filteredRates = countries.map((country) => {
-        const foundData = filteredDatas.find(
-          (filteredData) => filteredData[0] === country.code
+        // Finding data for current country code
+        const foundData = Object.entries(datas).find(
+          ([code]) => code === country.code
         );
+
+        // Mapping to desired structure
         return {
           country: country.country,
           code: country.code,
