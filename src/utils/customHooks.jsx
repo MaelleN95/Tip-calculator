@@ -11,7 +11,7 @@ export function useDatas() {
   // Function to fetch data from API
   const fetchData = async () => {
     try {
-      // const res = await fetch('https://cdn.taux.live/api/latest.json');
+      const res = await fetch('https://cdn.taux.live/api/latest.json');
       if (!res.ok) {
         throw new Error('Failed to fetch datas');
       }
