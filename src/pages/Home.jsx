@@ -56,7 +56,7 @@ function Home() {
   // Form handling using react-hook-form
   const form = useForm({ mode: 'onTouched' });
   const { register, handleSubmit, formState } = form;
-  const { errors, isDirty, isValid } = formState;
+  const { errors, isValid } = formState;
 
   useEffect(() => {
     const euroRate = currency.find((item) => item.code === 'EUR')?.rate;
@@ -307,7 +307,7 @@ function Home() {
             </label>
           </div>
           <div className="center">
-            <button type="submit" disabled={!isDirty || !isValid}>
+            <button type="submit" disabled={!isValid}>
               Calculer
             </button>
           </div>
