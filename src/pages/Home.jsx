@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useDatas, useScreenSize } from '../utils/customHooks';
@@ -35,11 +35,21 @@ function Home() {
   // Fetching currency data using "useDatas" custom hook
   const { currency } = useDatas();
 
+  // State to get the default habitual currency (Euro)
+  const [EURRate, setEURRate] = useState(1);
+
   // Fetching screen width using "useScreenSize" custom hook
   const screenHeight = useScreenSize().height;
+
   // States for managing various aspects of the component's data
+  // result: [tipCurrency, tipAmount, billAmount]
   const [result, setResult] = useState([]);
+  // resultInHabitualCurrency: [billAmount, tipAmount]
+  const [resultInHabitualCurrency, setResultInHabitualCurrency] = useState([]);
+  // currencyUnit: [habitualCurrencyUnit, tipCurrencyUnitInForm, tipCurrencyUnitAfterResult]
   const [currencyUnit, setcurrencyUnit] = useState([]);
+
+  const [habitualCurrency, setHabitualCurrency] = useState(1);
   const [NbPersons, setNbPersons] = useState(1);
   const [tipIndication, setTipIndication] = useState('');
 
@@ -48,24 +58,46 @@ function Home() {
   const { register, handleSubmit, formState } = form;
   const { errors, isDirty, isValid } = formState;
 
+  useEffect(() => {
+    const euroRate = currency.find((item) => item.code === 'EUR')?.rate;
+    setEURRate(euroRate);
+    setHabitualCurrency(euroRate);
+  }, [currency, EURRate]);
+
+  // useEffect to calculate the tip in the habitual currency when the habitual currency changes
+  useEffect(() => {
+    console.log('Taux de la devise habituelle : ', habitualCurrency);
+    const exchangeRate = habitualCurrency / result[0];
+    const billInHabitualCurrency = result[2] * exchangeRate;
+    const tipInHabitualCurrency = result[1] * exchangeRate;
+
+    setResultInHabitualCurrency([
+      billInHabitualCurrency,
+      tipInHabitualCurrency,
+    ]);
+
+    setcurrencyUnit((prevState) => [
+      findCurrencyUnit(currency, habitualCurrency),
+      prevState[1],
+      prevState[2],
+    ]);
+  }, [habitualCurrency, result]);
+
   /** Function to handle form submission */
   const onSubmit = async (data) => {
     try {
       // Calculations based on form data
-      const exchangeRate = data.habitualcurrency / data.tipcurrency;
-      const habCurBil = data.bill * exchangeRate;
-      const tipCurTip = data.bill * (data.percent / 100);
-      const habCurTip = tipCurTip * exchangeRate;
+      const tip = data.bill * (data.percent / 100);
 
       // Updating currency units based on selected currencies
       setcurrencyUnit((prevState) => [
-        findCurrencyUnit(currency, data.habitualcurrency),
+        prevState[0],
         findCurrencyUnit(currency, data.tipcurrency),
-        prevState[2],
+        findCurrencyUnit(currency, data.tipcurrency),
       ]);
 
       // Setting calculation results and number of persons
-      setResult([habCurBil, habCurTip, tipCurTip]);
+      setResult([data.tipcurrency, tip, data.bill]);
       setNbPersons(data.divide);
     } catch (error) {
       console.log(error);
@@ -76,13 +108,14 @@ function Home() {
   const tipCurrencyIndicationChange = (event) => {
     setcurrencyUnit((prevState) => [
       prevState[0],
-      prevState[1],
       findCurrencyUnit(currency, event.target.value),
+      prevState[2],
     ]);
 
     // Fetching tip indication (recommendation) based on selected currency
     const selectedCurrency =
       event.target.options[event.target.selectedIndex].text;
+
     const selectedTipIndication = countries.find(
       (country) => country.country === selectedCurrency.split(' (')[0]
     );
@@ -98,6 +131,10 @@ function Home() {
     }
   };
 
+  const habitualCurrencyChange = (e) => {
+    setHabitualCurrency(e.target.value);
+  };
+
   return (
     <main className="homepage-main">
       <h1>Calculatrice de pourboire</h1>
@@ -109,15 +146,8 @@ function Home() {
         Pour utiliser la calculatrice de pourboire, rien de plus simple :
         <ol>
           <li>
-            Sélectionnez votre <strong>devise habituelle</strong>, celle avec
-            laquelle vous avez l’habitude de payer.
-          </li>
-          <li>
-            Choisissez la{' '}
-            <strong>
-              devise du pays où vous vous apprêtez à faire un pourboire
-            </strong>{' '}
-            :
+            Sélectionnez le{' '}
+            <strong>pays où vous vous apprêtez à faire un pourboire</strong> :
             <Note direction="horizontal" openSetting={true}>
               Une fois choisie, une petite information, dans le même format que
               celle-ci, s’affichera en dessous pour vous conseiller sur le
@@ -136,9 +166,15 @@ function Home() {
             partager le montant du pourboire.
           </li>
           <li>
-            Et enfin, cliquez sur le bouton{' '}
-            <strong>&quot;Calculer&quot;</strong>.
+            Cliquez sur le bouton <strong>&quot;Calculer&quot;</strong>.
           </li>
+          <Note direction="horizontal" openSetting={true}>
+            Une fois le calcul effectué, vous obtiendrez le montant du pourboire
+            à laisser, ainsi que le montant total de l’addition dans votre
+            devise habituelle. Par défaut, la{' '}
+            <strong>devise habituelle est l’Euro (€)</strong>. Vous pouvez
+            changer cette devise dans le menu déroulant.
+          </Note>
         </ol>
       </Note>
       <section className="calculatorblock">
@@ -147,34 +183,15 @@ function Home() {
           onSubmit={handleSubmit(onSubmit)}
           noValidate
         >
-          <label htmlFor="habitualcurrency">
-            Votre devise
-            <select
-              id="habitualcurrency"
-              {...register('habitualcurrency', {
-                required: true,
-                valueAsNumber: true,
-              })}
-              required
-            >
-              <option value="">-- Choisissez une option --</option>
-              {currency.map((cur, i) => (
-                <option key={i} value={cur.rate}>
-                  {cur.country} ({cur.code})
-                </option>
-              ))}
-            </select>
-            <p className="error">{errors.habitualcurrency?.message}</p>
-          </label>
           <label htmlFor="tipcurrency">
-            Devise dans laquelle vous souhaitez faire votre pourboire
+            Pays dans lequel vous vous situez
             <select
               id="tipcurrency"
               {...register('tipcurrency', {
                 required: {
                   value: true,
                   message:
-                    'Le champ "Devise dans laquelle vous souhaitez faire votre pourboire" est obligatoire',
+                    'Le champ "Pays dans lequel vous vous situez" est obligatoire',
                 },
                 valueAsNumber: true,
               })}
@@ -205,7 +222,7 @@ function Home() {
             <label htmlFor="bill">
               Montant de l&apos;addition
               <div className="input-and-unit">
-                <span>{currencyUnit[2] ? currencyUnit[2] : '€'}</span>
+                <span>{currencyUnit[1] ? currencyUnit[1] : '€'}</span>
                 <input
                   type="number"
                   id="bill"
@@ -305,28 +322,54 @@ function Home() {
               <h3>Montant du pourboire</h3>
               <p className="result">
                 <strong>
-                  {rounded(result[2])}
-                  {currencyUnit[1]}
+                  {rounded(result[1])}
+                  {currencyUnit[2]}
                 </strong>
               </p>
               {/* Displaying tip per person if more than one person */}
-              {NbPersons !== 1 && (
+              {NbPersons > 1 && (
                 <>
                   <p className="dividedTipTitle">Par personne</p>
                   <p className="result">
                     <strong>
-                      {rounded(result[2] / NbPersons)}
-                      {currencyUnit[1]}
+                      {rounded(result[1] / NbPersons)}
+                      {currencyUnit[2]}
                     </strong>
                   </p>
                 </>
               )}
             </div>
-            {result[1] !== result[2] && (
+            {result[0] !== habitualCurrency && (
               <div className="table">
                 <h3>Dans votre devise</h3>
+                <select
+                  name="habitualCurrency"
+                  id="habitualCurrency"
+                  onChange={habitualCurrencyChange}
+                  value={habitualCurrency}
+                >
+                  {currency
+                    .filter(
+                      (objet, index, self) =>
+                        index === self.findIndex((o) => o.code === objet.code)
+                    )
+                    .sort((a, b) =>
+                      a.code === 'EUR'
+                        ? -1
+                        : b.code === 'EUR'
+                        ? 1
+                        : a.code && b.code
+                        ? a.code.localeCompare(b.code)
+                        : 0
+                    )
+                    .map((cur, i) => (
+                      <option key={i} value={cur.rate}>
+                        {cur.currencyUnit} ({cur.code})
+                      </option>
+                    ))}
+                </select>
                 <p className="result">
-                  {rounded(result[1])}
+                  {rounded(resultInHabitualCurrency[1])}
                   {currencyUnit[0]}
                 </p>
                 {/* Displaying tip per person if more than one person */}
@@ -334,7 +377,7 @@ function Home() {
                   <>
                     <p className="dividedTipTitle">Par personne</p>
                     <p className="result">
-                      {rounded(result[1] / NbPersons)}
+                      {rounded(resultInHabitualCurrency[1] / NbPersons)}
                       {currencyUnit[0]}
                     </p>
                   </>
@@ -342,8 +385,9 @@ function Home() {
               </div>
             )}
           </div>
+
           {/* Displaying bill amount in habitual currency if different from tip currency */}
-          {result[1] !== result[2] && (
+          {result[0] !== habitualCurrency && (
             <Note
               direction={'horizontal'}
               title="Indication sur le montant de votre addition dans votre devise habituelle"
@@ -351,9 +395,10 @@ function Home() {
             >
               Dans votre devise, le montant de l&apos;addition vaut{' '}
               <strong>
-                {rounded(result[0])}
+                {rounded(resultInHabitualCurrency[0])}
                 {currencyUnit[0]}
               </strong>
+              .
             </Note>
           )}
         </section>

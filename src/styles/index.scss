@@ -74,6 +74,10 @@ select {
   cursor: pointer;
   border: 1px solid $darkblue;
 }
+select option:checked {
+  color: $light;
+  background-color: $darkblue;
+}
 
 img {
   pointer-events: none;
@@ -159,7 +163,12 @@ img {
       @include active-button-light;
     }
   }
-  input:focus {
+  input:focus,
+  select:focus {
     outline: 1px solid $lightblue;
+  }
+  select option:checked {
+    color: $dark;
+    background-color: $lightblue;
   }
 }

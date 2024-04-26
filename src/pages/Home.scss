@@ -1,119 +1,122 @@
-.calculatorblock {
-  background: linear-gradient(#63b3ff, #5eaef8 60%, #8cc8ff);
-  border-radius: 8px;
-  padding: 2rem;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.0588235294),
-    0 1px 3px 0 rgba(0, 0, 0, 0.1019607843);
-  @media (max-width: $desktop) {
-    border-radius: 0;
+.homepage-main {
+  & label {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem 0;
   }
-  @media (max-width: $mobil) {
-    padding: 1rem;
-  }
-  & .note {
-    margin: 0.7rem 0;
-  }
-  & .formcalculator {
-    max-width: 1100px;
-    margin: auto;
-    & label {
-      display: flex;
-      flex-direction: column;
-      padding: 0.5rem 0;
+  & input,
+  select {
+    @include general-font-settings;
+    padding: 0 10px;
+    height: 40px;
+    border-radius: 5px;
+    color: $dark;
+    @include bg-light;
+    &:focus {
+      box-shadow: 0px 0px 10px $darkblue;
     }
-    & input,
-    select {
-      @include general-font-settings;
-      padding: 0 10px;
-      height: 40px;
-      border-radius: 5px;
-      color: $dark;
-      @include bg-light;
-      &:focus {
-        box-shadow: 0px 0px 10px $darkblue;
-      }
-      &:invalid {
-        color: rgba(0, 0, 0, 0.5);
-      }
-      // hide arrow
-      &::-webkit-outer-spin-button,
-      &::-webkit-inner-spin-button {
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        appearance: none;
-        margin: 0;
-      }
-      &[type='number'] {
-        -moz-appearance: textfield;
-        -webkit-appearance: textfield;
-      }
+    &:invalid {
+      color: rgba(0, 0, 0, 0.5);
     }
-    & .fd-row {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      @media (max-width: $mobil) {
-        flex-direction: column;
-      }
-      & > * {
-        width: 320px;
-        @media (max-width: $tablet) {
-          width: 30%;
-        }
+    // hide arrow
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      margin: 0;
+    }
+    &[type='number'] {
+      -moz-appearance: textfield;
+      -webkit-appearance: textfield;
+    }
+  }
+  .calculatorblock {
+    background: linear-gradient(#63b3ff, #5eaef8 60%, #8cc8ff);
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.0588235294),
+      0 1px 3px 0 rgba(0, 0, 0, 0.1019607843);
+    @media (max-width: $desktop) {
+      border-radius: 0;
+    }
+    @media (max-width: $mobil) {
+      padding: 1rem;
+    }
+    & .note {
+      margin: 0.7rem 0;
+    }
+    & .formcalculator {
+      max-width: 1100px;
+      margin: auto;
+
+      & .fd-row {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
         @media (max-width: $mobil) {
-          width: 100%;
+          flex-direction: column;
+        }
+        & > * {
+          width: 320px;
+          @media (max-width: $tablet) {
+            width: 30%;
+          }
+          @media (max-width: $mobil) {
+            width: 100%;
+          }
         }
       }
-    }
-    & .input-and-unit {
-      position: relative;
-      & > input {
-        padding-right: 60px;
-        width: 250px;
-        text-align: right;
-        @media (max-width: $tablet) {
-          padding-right: 22%;
-          width: 78%;
+      & .input-and-unit {
+        position: relative;
+        & > input {
+          padding-right: 60px;
+          width: 250px;
+          text-align: right;
+          @media (max-width: $tablet) {
+            padding-right: 22%;
+            width: 78%;
+          }
+          @media (max-width: $mobil) {
+            padding: 0;
+            width: 100%;
+            text-align: center;
+          }
         }
-        @media (max-width: $mobil) {
-          padding: 0;
-          width: 100%;
-          text-align: center;
+        & > span {
+          position: absolute;
+          top: 50%;
+          right: 0.7rem;
+          padding-left: 10px;
+          transform: translate(0, -50%);
+          text-align: end;
+          border-left: 2px solid lighten($color: $dark, $amount: 70);
+          @media (max-width: $tablet) {
+            right: 0.4rem;
+            width: 10px;
+            padding-left: 7px;
+          }
+          @media (max-width: $mobil) {
+            right: 1rem;
+          }
         }
       }
-      & > span {
+      & #divide {
+        text-align: center;
+      }
+      & button {
+        margin: 20px;
+      }
+      & .error {
         position: absolute;
-        top: 50%;
-        right: 0.7rem;
-        padding-left: 10px;
-        transform: translate(0, -50%);
-        text-align: end;
-        border-left: 2px solid lighten($color: $dark, $amount: 70);
-        @media (max-width: $tablet) {
-          right: 0.4rem;
-          width: 10px;
-          padding-left: 7px;
-        }
-        @media (max-width: $mobil) {
-          right: 1rem;
-        }
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        border: 0;
       }
-    }
-    & #divide {
-      text-align: center;
-    }
-    & button {
-      margin: 20px;
-    }
-    & .error {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      border: 0;
     }
   }
 }
@@ -155,9 +158,11 @@
       flex-direction: column;
     }
     & .table {
+      position: relative;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      align-items: center;
       width: 100%;
       @include bg-lightblue;
       padding: 20px 40px;
@@ -165,6 +170,39 @@
       @media (max-width: $mobil) {
         width: calc(100% - 80px);
         max-width: 700px;
+      }
+      & #habitualCurrency {
+        position: absolute;
+        @include button-dark;
+        color: $light;
+        right: 15px;
+        top: 10px;
+        height: 35px;
+        padding: 0.2rem 0;
+        opacity: 0.9;
+        font-size: 1rem;
+        & option {
+          background-color: $darkblue;
+          color: $light;
+          &:checked {
+            background-color: $lightblue;
+            color: $dark;
+          }
+        }
+        &:hover {
+          opacity: 1;
+        }
+        @media (max-width: $tablet) {
+          right: 5px;
+        }
+        @media (max-width: $small-mobil) {
+          position: relative;
+          text-align: center;
+          right: auto;
+          top: auto;
+          margin-top: 0.5rem;
+          opacity: 1;
+        }
       }
     }
     & .result-in-tip-curr {
@@ -206,7 +244,7 @@
     padding: 1rem;
   }
   @media screen and (min-height: 1100px) {
-    margin: 5vh 0 8vh 0;
+    margin: 2vh 0;
   }
 }
 .homepage-main {
@@ -237,18 +275,20 @@
 }
 
 [color-theme='dark'] {
-  .calculatorblock {
-    @include bg-darkblue;
-    & .formcalculator {
-      & input,
-      select {
-        background: linear-gradient(#26559d, #1b4b92 60%, #184793);
-        color: darken($color: $light, $amount: 10);
-        background-color: $dark;
-        &:invalid {
-          background-color: darken($color: red, $amount: 40);
-          animation: heartbeatDark 0.5s infinite alternate;
-        }
+  .homepage-main {
+    & input,
+    select {
+      background: linear-gradient(#26559d, #1b4b92 60%, #184793);
+      color: darken($color: $light, $amount: 10);
+      background-color: $dark;
+      &:invalid {
+        background-color: darken($color: red, $amount: 40);
+        animation: heartbeatDark 0.5s infinite alternate;
+      }
+    }
+    .calculatorblock {
+      @include bg-darkblue;
+      & .formcalculator {
       }
     }
   }
@@ -263,6 +303,18 @@
       @include bg-darkblue;
       & h3 {
         color: darken($color: $light, $amount: 10);
+      }
+      & #habitualCurrency {
+        @include button-light;
+        color: $dark;
+        & option {
+          background-color: $lightblue;
+          color: $dark;
+          &:checked {
+            background-color: $darkblue;
+            color: $light;
+          }
+        }
       }
       & .result {
         color: $light;

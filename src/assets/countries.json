@@ -1,5 +1,13 @@
 [
   {
+    "country": "Canada",
+    "flag": "/canada.svg",
+    "code": "CAD",
+    "currencyUnit": "$",
+    "indication": "Au Canada, les pourboires sont obligatoires. Ils sont en moyenne de 15%. Néanmoins, ils sont parfois inclus dans la note, pensez à vérifier ! Les pourboires font partie du salaire des serveurs, il est donc important de les laisser si vous êtes satisfait du service.",
+    "culture": "Au Canada, les pourboires sont considérés comme une obligation sociale. Il n'existe pas de loi les concernant, mais ils font partis du salaire des serveurs, c'est pourquoi il est important de les laisser si vous êtes satisfait du service. Ils sont en moyenne de 15 à 20%. Les pourboires sont souvent laissés en espèces. Néanmoins, ils sont parfois inclus dans l'addition, pensez à vérifier !"
+  },
+  {
     "country": "États-Unis",
     "flag": "/us.svg",
     "code": "USD",
@@ -30,13 +38,5 @@
     "currencyUnit": "£",
     "indication": "Au Royaume-Uni, les pourboires sont estimés obligatoires dans certaines situations. Ils sont en moyenne de 10 à 15%. Néanmoins, ils sont parfois inclus dans la note, pensez à vérifier !",
     "culture": "Au Royaume-Uni, les pourboires sont appréciés dans les restaurants et les pubs. Ils sont souvent ajoutés à la facture dans les restaurants, mais laisser un pourboire en espèces est également courant. Ils sont généralement d'environ 10% de l'addition, bien que cela puisse varier en fonction de l'appréciation du service."
-  },
-  {
-    "country": "Canada",
-    "flag": "/canada.svg",
-    "code": "CAD",
-    "currencyUnit": "$",
-    "indication": "Au Canada, les pourboires sont obligatoires. Ils sont en moyenne de 15%. Néanmoins, ils sont parfois inclus dans la note, pensez à vérifier ! Les pourboires font partie du salaire des serveurs, il est donc important de les laisser si vous êtes satisfait du service.",
-    "culture": "Au Canada, les pourboires sont considérés comme une obligation sociale. Il n'existe pas de loi les concernant, mais ils font partis du salaire des serveurs, c'est pourquoi il est important de les laisser si vous êtes satisfait du service. Ils sont en moyenne de 15 à 20%. Les pourboires sont souvent laissés en espèces. Néanmoins, ils sont parfois inclus dans l'addition, pensez à vérifier !"
   }
 ]

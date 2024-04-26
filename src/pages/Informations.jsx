@@ -116,21 +116,15 @@ function Informations() {
         <p>Pour utiliser la calculatrice de pourboire, rien de plus simple :</p>
         <ol>
           <li>
-            <strong>Sélectionnez votre devise habituelle</strong>, celle avec
-            laquelle vous avez l’habitude de payer dans votre pays.
-          </li>
-          <li>
-            Choisissez parmi la liste{' '}
-            <strong>
-              la devise du pays où vous vous apprêtez à faire un pourboire
-            </strong>{' '}
+            Sélectionnez parmi la liste{' '}
+            <strong>le pays où vous vous apprêtez à faire un pourboire</strong>{' '}
             :
             <Note direction="horizontal" openSetting={true}>
               Une fois choisie, une petite information dans le même format que
               celle-ci, s’affichera en dessous pour vous indiquer le pourcentage
-              de pourboire habituel du pays{' '}
-              <strong>pour vous conseiller</strong>. Vous pouvez choisir de
-              suivre ces conseils, ou de sélectionner votre propre pourcentage.
+              de pourboire moyen du pays <strong>pour vous conseiller</strong>.
+              Vous pouvez choisir de suivre ces conseils, ou de sélectionner
+              votre propre pourcentage.
             </Note>
           </li>
           <li>
@@ -151,6 +145,13 @@ function Informations() {
             <strong>&quot;Calculer&quot;</strong>.
           </li>
         </ol>
+        <Note direction="horizontal" openSetting={true}>
+          Une fois le calcul effectué, vous obtiendrez le montant du pourboire à
+          laisser, ainsi que le montant total de l’addition dans votre{' '}
+          <strong>devise habituelle</strong>. Par défaut, la devise habituelle
+          est <strong>l’Euro (€)</strong>. Vous pouvez changer cette devise dans
+          le menu déroulant dans la section Résultat de la calculatrice.
+        </Note>
       </section>
       <section id="culture">
         <h2>Les différentes cultures et les pourboires</h2>
