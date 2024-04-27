@@ -17,10 +17,17 @@ function Informations() {
     if (location.hash) {
       const anchor = document.getElementById(location.hash.substring(1)); // Récupérer l'élément avec l'ID de l'ancre
       if (anchor) {
-        anchor.scrollIntoView({ behavior: 'smooth' });
+        anchor.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     }
   }, [location]);
+
+  const smoothScroll = (e) => {
+    e.preventDefault();
+    const target = e.target.getAttribute('href');
+    const anchor = document.getElementById(target.substring(1));
+    anchor && anchor.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
 
   const [selectedCountry, setSelectedCountry] = useState('');
 
@@ -49,16 +56,24 @@ function Informations() {
       <nav className="table-of-contents">
         <ul>
           <li>
-            <a href="#goal">Objectif</a>
+            <a href="#goal" onClick={(e) => smoothScroll(e)}>
+              Objectif
+            </a>
           </li>
           <li>
-            <a href="#operation">Comment fonctionne la calculatrice ?</a>
+            <a href="#operation" onClick={(e) => smoothScroll(e)}>
+              Comment fonctionne la calculatrice ?
+            </a>
           </li>
           <li>
-            <a href="#culture">Les différentes cultures et les pourboires</a>
+            <a href="#culture" onClick={(e) => smoothScroll(e)}>
+              Les différentes cultures et les pourboires
+            </a>
           </li>
           <li>
-            <a href="#website-improvement">Pour améliorer le site</a>
+            <a href="#website-improvement" onClick={(e) => smoothScroll(e)}>
+              Pour améliorer le site
+            </a>
           </li>
         </ul>
       </nav>

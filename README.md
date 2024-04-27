@@ -22,7 +22,7 @@ Cette fonctionnalité est particulièrement utile pour les voyageurs qui souhait
 Les technologies utilisées dans ce projet à titre personnel sont :
 
 - **React** (18.2.0)
-- **vite** (5.1.4)
+- **Vite** (5.1.4)
 - **Sass** (1.71.1)
 
 ## Installation
