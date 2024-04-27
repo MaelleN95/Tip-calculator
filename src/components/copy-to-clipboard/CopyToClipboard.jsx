@@ -11,7 +11,7 @@ function CopyToClipboard() {
       .writeText(email)
       .then(() => {
         setCopied(true);
-        setTimeout(() => setCopied(false), 3500);
+        setTimeout(() => setCopied(false), 3000);
       })
       .catch(() =>
         console.error('Erreur lors de la copie dans le presse-papiers :')

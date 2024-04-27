@@ -121,22 +121,22 @@ function Informations() {
             :
             <Note direction="horizontal" openSetting={true}>
               Une fois choisie, une petite information dans le même format que
-              celle-ci, s’affichera en dessous pour vous indiquer le pourcentage
-              de pourboire moyen du pays <strong>pour vous conseiller</strong>.
-              Vous pouvez choisir de suivre ces conseils, ou de sélectionner
-              votre propre pourcentage.
+              celle-ci, s&apos;affichera en dessous pour vous indiquer le
+              pourcentage de pourboire moyen du pays{' '}
+              <strong>pour vous conseiller</strong>. Vous pouvez choisir de
+              suivre ces conseils, ou de sélectionner votre propre pourcentage.
             </Note>
           </li>
           <li>
-            Indiquez <strong>le montant de l’addition</strong> que vous vous
-            apprêtez à régler.
+            Indiquez <strong>le montant de l&apos;addition</strong> que vous
+            vous apprêtez à régler.
           </li>
           <li>
             Indiquez le <strong>pourcentage de pourboire</strong> que vous
             souhaitez laisser. Par défaut, le pourcentage conseillé sera choisi.
           </li>
           <li>
-            Si vous êtes plusieurs à régler l’addition et que{' '}
+            Si vous êtes plusieurs à régler l&apos;addition et que{' '}
             <strong>vous souhaitez partager le pourboire</strong>, indiquez le
             nombre de personnes.
           </li>
@@ -146,11 +146,12 @@ function Informations() {
           </li>
         </ol>
         <Note direction="horizontal" openSetting={true}>
-          Une fois le calcul effectué, vous obtiendrez le montant du pourboire à
-          laisser, ainsi que le montant total de l’addition dans votre{' '}
-          <strong>devise habituelle</strong>. Par défaut, la devise habituelle
-          est <strong>l’Euro (€)</strong>. Vous pouvez changer cette devise dans
-          le menu déroulant dans la section Résultat de la calculatrice.
+          Une fois le calcul effectué, vous obtiendrez également le montant du
+          pourboire à laisser, ainsi que le montant total de l&apos;addition
+          dans votre <strong>devise habituelle</strong>. Par défaut, la devise
+          habituelle est <strong>l&apos;Euro (€)</strong>. Vous pouvez changer
+          cette devise dans le menu déroulant dans la section Résultats de la
+          calculatrice.
         </Note>
       </section>
       <section id="culture">
@@ -169,13 +170,13 @@ function Informations() {
       <section id="website-improvement">
         <img
           src="/Coffee-shop-pana.svg"
-          alt="Illustration d’un café avec deux personnes assises à une table, l’une buvant du café et l’autre en conversation, et un barista derrière le comptoir avec une machine à café."
+          alt="Illustration d'un café avec deux personnes assises à une table, l'une buvant du café et l'autre en conversation, et un barista derrière le comptoir avec une machine à café."
           className="coffee-shop-cover"
         />
         <h2>Pour améliorer le site</h2>
         <p>
-          Si vous avez des suggestions pour améliorer le site, n’hésitez pas à
-          me contacter :
+          Si vous avez des suggestions pour améliorer le site, n&apos;hésitez
+          pas à me contacter :
         </p>
         <ul>
           <li>

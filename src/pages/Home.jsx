@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useDatas, useScreenSize } from '../utils/customHooks';
@@ -35,6 +35,14 @@ function Home() {
   // Fetching currency data using "useDatas" custom hook
   const { currency } = useDatas();
 
+  // creating a reference to the results section to scroll to it
+  const resultView = useRef(null);
+
+  // Function to scroll to the results section
+  const scrollToresultView = () => {
+    resultView.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
   // State to get the default habitual currency (Euro)
   const [EURRate, setEURRate] = useState(1);
 
@@ -66,7 +74,6 @@ function Home() {
 
   // useEffect to calculate the tip in the habitual currency when the habitual currency changes
   useEffect(() => {
-    console.log('Taux de la devise habituelle : ', habitualCurrency);
     const exchangeRate = habitualCurrency / result[0];
     const billInHabitualCurrency = result[2] * exchangeRate;
     const tipInHabitualCurrency = result[1] * exchangeRate;
@@ -150,29 +157,30 @@ function Home() {
             <strong>pays où vous vous apprêtez à faire un pourboire</strong> :
             <Note direction="horizontal" openSetting={true}>
               Une fois choisie, une petite information, dans le même format que
-              celle-ci, s’affichera en dessous pour vous conseiller sur le
+              celle-ci, s&apos;affichera en dessous pour vous conseiller sur le
               montant du pourboire.
             </Note>
           </li>
           <li>
-            Indiquez le <strong>montant de l’addition</strong>.
+            Indiquez le <strong>montant de l&apos;addition</strong>.
           </li>
           <li>
             Indiquez le <strong>pourcentage</strong> de pourboire que vous
-            souhaitez laisser.
+            souhaitez laisser. Par défaut, le pourcentage conseillé sera choisi.
           </li>
           <li>
-            Indiquez le <strong>nombre de personnes</strong> si vous souhaitez
-            partager le montant du pourboire.
+            Si vous êtes plusieurs à régler l&apos;addition et que{' '}
+            <strong>vous souhaitez partager le pourboire</strong>, indiquez le
+            nombre de personnes.
           </li>
           <li>
-            Cliquez sur le bouton <strong>&quot;Calculer&quot;</strong>.
+            Cliquez sur le bouton &quot;<strong>Calculer</strong>&quot;.
           </li>
           <Note direction="horizontal" openSetting={true}>
-            Une fois le calcul effectué, vous obtiendrez le montant du pourboire
-            à laisser, ainsi que le montant total de l’addition dans votre
-            devise habituelle. Par défaut, la{' '}
-            <strong>devise habituelle est l’Euro (€)</strong>. Vous pouvez
+            Une fois le calcul effectué, vous obtiendrez également le montant du
+            pourboire à laisser, ainsi que le montant total de l&apos;addition
+            dans votre devise habituelle. Par défaut, la{' '}
+            <strong>devise habituelle est l&apos;Euro (€)</strong>. Vous pouvez
             changer cette devise dans le menu déroulant.
           </Note>
         </ol>
@@ -307,15 +315,20 @@ function Home() {
             </label>
           </div>
           <div className="center">
-            <button type="submit" disabled={!isValid}>
+            <button
+              type="submit"
+              disabled={!isValid}
+              onClick={scrollToresultView}
+            >
               Calculer
             </button>
           </div>
         </form>
       </section>
+      <div ref={resultView}></div>
       {/* Displaying results */}
       {result[0] != null && (
-        <section className="results">
+        <section id="resultsSection" className="results">
           <h2>Résultats</h2>
           <div className="tables">
             <div className="table result-in-tip-curr">

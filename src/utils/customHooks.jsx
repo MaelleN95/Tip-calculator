@@ -39,7 +39,10 @@ export function useDatas() {
   const fetchDataAndUpdate = async () => {
     try {
       const jsonData = await fetchData();
-      console.log('The data is now up to date : ', jsonData.lastupdate);
+      console.log(
+        'The data is now up to date : ',
+        new Date(jsonData.lastupdate)
+      );
 
       const transformedData = transformData(countries, jsonData.rates);
 
