@@ -30,19 +30,19 @@ Que vous soyez en vacances à l'étranger ou dans un restaurant chic dans votre 
 
 ## Installation
 
-1. Cloner le repository :
+1. Clonez le repository :
 ```bash
   git clone https://github.com/MaelleN95/Tip-calculator.git
 ```
 
-2. Installer les dépendances
+2. Installez les dépendances
 
 ```bash
   cd Tip-calculator
   npm install
 ```
 
-3. Lancer l'application
+3. Lancez l'application
 
 ```bash
   npm run dev

@@ -8,12 +8,12 @@ function Footer() {
           <p>
             Développé par{' '}
             <a
-              href="https://maelle-nioche.vercel.app/"
+              href="https://koji-dev.fr/"
               target="_blank"
               rel="noopener noreferrer"
-              title="Ouvrir le site web de Maëlle Nioche dans un nouvel onglet"
+              title="Ouvrir le site web de Kōji dans un nouvel onglet"
             >
-              Maëlle Nioche
+              Kōji
             </a>{' '}
             © 2024
           </p>
@@ -21,7 +21,7 @@ function Footer() {
             Ce site est open source et ne récolte aucune donnée. Consultez le
             code source sur{' '}
             <a
-              href="https://github.com/MaelleN95/Tip-calculator"
+              href="https://github.com/MaelleN95/tip-calculator"
               target="_blank"
               rel="noopener noreferrer"
               title='Ouvrir le dépôt GitHub de "tip-calculator" dans un nouvel onglet'
