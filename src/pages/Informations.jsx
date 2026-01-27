@@ -104,7 +104,7 @@ function Informations() {
           Ne vous inquiétez plus,{' '}
           <strong>cette calculatrice est faite pour vous</strong> !
         </p>
-        <p>Nous avons rassemblé dans un même endroit :</p>
+        <p>J&apos;ai rassemblé dans un même endroit :</p>
         <div>
           <img
             src="/currency-animed-positive.svg"

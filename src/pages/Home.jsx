@@ -335,7 +335,7 @@ function Home() {
               <h3>Montant du pourboire</h3>
               <p className="result">
                 <strong>
-                  {rounded(result[1])}
+                  {rounded(result[1])}{' '}
                   {currencyUnit[2]}
                 </strong>
               </p>
@@ -345,7 +345,7 @@ function Home() {
                   <p className="dividedTipTitle">Par personne</p>
                   <p className="result">
                     <strong>
-                      {rounded(result[1] / NbPersons)}
+                      {rounded(result[1] / NbPersons)}{' '}
                       {currencyUnit[2]}
                     </strong>
                   </p>
@@ -382,7 +382,7 @@ function Home() {
                     ))}
                 </select>
                 <p className="result">
-                  {rounded(resultInHabitualCurrency[1])}
+                  {rounded(resultInHabitualCurrency[1])}{' '}
                   {currencyUnit[0]}
                 </p>
                 {/* Displaying tip per person if more than one person */}
@@ -390,7 +390,7 @@ function Home() {
                   <>
                     <p className="dividedTipTitle">Par personne</p>
                     <p className="result">
-                      {rounded(resultInHabitualCurrency[1] / NbPersons)}
+                      {rounded(resultInHabitualCurrency[1] / NbPersons)}{' '}
                       {currencyUnit[0]}
                     </p>
                   </>

@@ -4,16 +4,16 @@
     "flag": "/canada.svg",
     "code": "CAD",
     "currencyUnit": "$",
-    "indication": "Au Canada, les pourboires sont obligatoires. Ils sont en moyenne de 15%. Néanmoins, ils sont parfois inclus dans la note, pensez à vérifier ! Les pourboires font partie du salaire des serveurs, il est donc important de les laisser si vous êtes satisfait du service.",
-    "culture": "Au Canada, les pourboires sont considérés comme une obligation sociale. Il n'existe pas de loi les concernant, mais ils font partis du salaire des serveurs, c'est pourquoi il est important de les laisser si vous êtes satisfait du service. Ils sont en moyenne de 15 à 20%. Les pourboires sont souvent laissés en espèces. Néanmoins, ils sont parfois inclus dans l'addition, pensez à vérifier !"
+    "indication": "Au Canada, les pourboires sont fortement attendus dans le service. Ils sont en moyenne de 15%. Vérifiez si le service est inclus dans l'addition. Les pourboires font partie du revenu des serveurs et sont généralement laissés en espèces.",
+    "culture": "Au Canada, le pourboire est attendu dans les restaurants, bars et certains services. Il n'existe pas de loi les rendant obligatoires, mais ils constituent une part importante du revenu des serveurs. Les pourboires sont généralement de 15 à 20 %, laissés en espèces ou ajoutés à l'addition si le service n'est pas inclus."
   },
   {
     "country": "États-Unis",
     "flag": "/us.svg",
     "code": "USD",
     "currencyUnit": "$",
-    "indication": "Aux États-Unis, les pourboires sont estimés obligatoires. Ils sont en moyenne de 15%. Néanmoins, Ils sont parfois inclus dans la note, pensez à vérifier !",
-    "culture": "Aux États-Unis, le pourboire est largement répandu et souvent considéré comme une obligation sociale. Ils sont généralement ajoutés à la facture dans les restaurants et les bars, ou laissés en espèces pour les services tels que les livraisons de repas et les services de taxi. Les pourboires constituent une part importante du revenu des travailleurs du service, souvent en complément de salaires de base bas. Ils sont généralement compris entre 15 et 20 % de la facture totale."
+    "indication": "Aux États-Unis, les pourboires sont fortement attendus. Ils sont en moyenne de 15%. Vérifiez si le service est inclus dans l'addition.",
+    "culture": "Aux États-Unis, le pourboire est socialement attendu dans la majorité des services comme restaurants, bars, taxis ou salons. Il constitue une part importante du revenu des employés du service, souvent en complément d'un salaire de base faible. Les pourboires sont généralement de 15 à 20 % de la facture, laissés en espèces ou ajoutés à l'addition selon les établissements."
   },
   {
     "country": "France",
@@ -21,22 +21,30 @@
     "code": "EUR",
     "currencyUnit": "€",
     "indication": "En France, les pourboires sont facultatifs. Ils sont en moyenne de 5% à 10%. Le service est inclu dans la note dans les restaurants et les cafés. Néanmoins, si vous êtes satisfait du service, n'hésitez pas à laisser un pourboire !",
-    "culture": "En France, les pourboires sont courants dans les restaurants, les cafés et les services tels que les taxis. Ils sont souvent laissés en espèces directement à la personne qui fournit le service, bien que certains établissements permettent également d'ajouter un pourboire à l'addition par carte de crédit. Les pourboires sont considérés comme une reconnaissance du bon service. Ils sont généralement compris entre 5 et 10 % de la note, bien que dans certains cas, un pourcentage plus élevé puisse être laissé pour un service exceptionnel."
+    "culture": "En France, les pourboires sont un geste de reconnaissance plutôt qu'une obligation. Dans les restaurants et cafés, le service est inclus dans l'addition, mais il est courant de laisser quelques pièces en espèces pour le serveur. Dans les taxis ou autres services, le pourboire est également apprécié et représente souvent 5 à 10 % de la facture."
   },
   {
     "country": "Italie",
     "flag": "/italy.svg",
     "code": "EUR",
     "currencyUnit": "€",
-    "indication": "En Italie, les pourboires sont conseillés. Ils sont en moyenne de 10%. Le service est généralement inclu dans la note dans les restaurants et les cafés. Mais il est toujours bien vu de laisser un pourboire si vous êtes satisfait du service.",
-    "culture": "En Italie, le pourboire n'est pas une pratique aussi répandue qu'ailleurs, mais il est souvent apprécié dans les restaurants, surtout dans les zones touristiques. Ils sont généralement laissés en espèces, en arrondissant la facture ou en laissant quelques euros supplémentaires. Les pourboires sont considérés comme une forme de reconnaissance pour un service exceptionnel, et sont généralement à hauteur de 5 à 10 % de l'addition."
+    "indication": "En Italie, les pourboires sont conseillés. Ils sont en moyenne de 5 à 10 %. Le service est parfois inclus dans la note (coperto). Laisser un pourboire est apprécié si vous êtes satisfait du service.",
+    "culture": "En Italie, le pourboire n'est pas obligatoire, mais apprécié. Dans les restaurants, un service ou 'coperto' est souvent inclus, surtout dans les zones touristiques. Les pourboires sont généralement laissés en espèces, arrondissant la facture ou ajoutant quelques euros, entre 5 et 10 %."
   },
   {
     "country": "Royaume-Uni",
     "flag": "/uk.svg",
     "code": "GBP",
     "currencyUnit": "£",
-    "indication": "Au Royaume-Uni, les pourboires sont estimés obligatoires dans certaines situations. Ils sont en moyenne de 10 à 15%. Néanmoins, ils sont parfois inclus dans la note, pensez à vérifier !",
-    "culture": "Au Royaume-Uni, les pourboires sont appréciés dans les restaurants et les pubs. Ils sont souvent ajoutés à la facture dans les restaurants, mais laisser un pourboire en espèces est également courant. Ils sont généralement d'environ 10% de l'addition, bien que cela puisse varier en fonction de l'appréciation du service."
+    "indication": "Au Royaume-Uni, les pourboires sont appréciés dans les restaurants et taxis. Ils sont en moyenne de 10 %. Vérifiez si le service est inclus dans la note.",
+    "culture": "Au Royaume-Uni, les pourboires sont appréciés dans les restaurants, cafés et taxis. Dans les restaurants, un pourboire de 10 à 15 % est courant si le service n'est pas inclus. Dans les pubs ou bars, laisser un pourboire n'est pas obligatoire mais peut se faire en arrondissant la note."
+  },
+  {
+    "country": "Maroc",
+    "flag": "/morocco.svg",
+    "code": "MAD",
+    "currencyUnit": "DH",
+    "indication": "Au Maroc, les pourboires sont appréciés mais facultatifs. Ils sont en moyenne de 5 à 10% selon le service.",
+    "culture": "Au Maroc, le pourboire, appelé 'bakchich', est courant dans les restaurants, cafés, hôtels, taxis et pour certains services touristiques. Il n'est jamais obligatoire. En restaurants et cafés, on laisse généralement 5 à 10 % si le service n'est pas inclus. Pour les hôtels, les bagagistes et femmes de chambre, quelques dirhams suffisent. Les pourboires sont habituellement donnés en espèces."
   }
 ]
